@@ -36,7 +36,7 @@ klientem, trzeci z czwartym itd.
 ## Turniej
 
 Turniej składa się z rund, których liczba wyliczana jest w zależności od liczby zawodników i systemu. Rundy
-składają się z gier. Kolejne gry uruchamiane są ręcznie (za pomocą ponownego logowanie klientów).
+składają się z gier. Kolejne rundy uruchamiane są ręcznie (za pomocą ponownego logowania klientów).
 Turniej zostanie rozegrany [Systemem szwajcarskim](https://pl.wikipedia.org/wiki/System_szwajcarski)
 z wykorzystaniem webowej aplikacji ([SwissSystem.org](https://swisssystem.org/)).
 

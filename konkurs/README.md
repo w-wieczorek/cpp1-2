@@ -28,7 +28,7 @@ Przykład:
 Server started on /192.168.0.15:8080
 ```
 
-Uruchomiony serwer nasłuchuje na uczestników turnieju. Aby rozpocząć grę z serwerem muszą się
+Uruchomiony serwer nasłuchuje na uczestników turnieju. Aby rozpocząć grę, z serwerem muszą się
 połączyć co najmniej dwa programy klienckie. Pierwszy zalogowany klient zagra z drugim zalogowanym
 klientem, trzeci z czwartym itd.
 
@@ -38,7 +38,7 @@ klientem, trzeci z czwartym itd.
 Turniej składa się z rund, których liczba wyliczana jest w zależności od liczby zawodników i systemu. Rundy
 składają się z gier. Kolejne gry uruchamiane są ręcznie (za pomocą ponownego logowanie klientów).
 Turniej zostanie rozegrany [Systemem szwajcarskim](https://pl.wikipedia.org/wiki/System_szwajcarski)
-z wykorzystaniem webowej aplikacji ([](https://swisssystem.org/)).
+z wykorzystaniem webowej aplikacji ([SwissSystem.org](https://swisssystem.org/)).
 
 ## Zasady gry
 
@@ -50,7 +50,7 @@ Protokół komunikacyjny oparty jest na standardowych gniazdkach sieciowych; ka�
 do serwera powinna kończyć się znakiem nowej linii. Używane w protokole numery wierzchołków są zgodne 
 z losowym grafem generowanym każdorazowo przed rozpoczęciem gry.
 
-### Żądania klient (wysyłają programy grające w turnieju)
+### Żądania klienta (wysyłają programy grające w turnieju)
 
 ```
 100 [nazwa_gracza]  // Podłącz się jako gracz, "nazwa gracza" nie może zawierać białych znaków.

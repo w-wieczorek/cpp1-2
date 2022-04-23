@@ -43,7 +43,13 @@ z wykorzystaniem webowej aplikacji ([SwissSystem.org](https://swisssystem.org/))
 
 ## Zasady gry
 
-Ble ble ble
+Rekwizytami są graf nieskierowany (bez pętli i bez krawędzi wielokrotnych) i żeton,
+który na początku gry znajduje się w losowo wybranym wierzchołku grafu.
+
+Gracze A i B naprzemiennie wykonują ruchy, gdzie ruch polega na przesunięciu żetonu
+do jednego z sąsiednich wierzchołków, a nstępnie usunięciu krawędzi przez którą dokonano
+przesunięcia. Przegrywa gracz, który nie może wykonać przesunięcia, gdy na niego przypada 
+ruch.
 
 ## Protokół komunikacyjny
 

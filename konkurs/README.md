@@ -21,6 +21,8 @@ Where the allowed arguments are:
   -h | --help          Show help
   -i | --ip address    IP address of this server (required)
   -p | --port number   Port on listening (required)
+  -g | --gsize number  The size of a game graph (default = 100 nodes)
+  -t | --time seconds  Time limit for a single move (default = 2 seconds)
 ```
 
 Przykład:
@@ -32,7 +34,6 @@ Server started on /192.168.0.15:8080
 Uruchomiony serwer nasłuchuje na uczestników turnieju. Aby rozpocząć grę, z serwerem muszą się
 połączyć co najmniej dwa programy klienckie. Pierwszy zalogowany klient zagra z drugim zalogowanym
 klientem, trzeci z czwartym itd.
-
 
 ## Turniej
 
@@ -47,7 +48,7 @@ Rekwizytami są graf nieskierowany (bez pętli i bez krawędzi wielokrotnych) i 
 który na początku gry znajduje się w losowo wybranym wierzchołku grafu.
 
 Gracze A i B naprzemiennie wykonują ruchy, gdzie ruch polega na przesunięciu żetonu
-do jednego z sąsiednich wierzchołków, a nstępnie usunięciu krawędzi przez którą dokonano
+do jednego z sąsiednich wierzchołków, a następnie usunięciu krawędzi przez którą dokonano
 przesunięcia. Przegrywa gracz, który nie może wykonać przesunięcia, gdy na niego przypada 
 ruch.
 

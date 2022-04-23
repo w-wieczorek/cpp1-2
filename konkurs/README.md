@@ -86,7 +86,14 @@ Przykłady:
 
 Przykłady:
 ```
-200 4 2 6 3 5 2 5 0 2 1 3 0 1 4 5
+200 6 2 5 3 5 2 5 0 2 1 3 4 5
 220 3
 230
 ```
+
+Opis gry składa się z czterech części. Pierwsza część to liczba informująca, ile jest wierzchołków 
+w grafie (w ww. przykładzie 6). Druga część to numer wierzchołka, w którym znajduje się żeton
+(w przykładzie 2). Trzecia część -- też jedna wartość -- to liczba równa mocy zbioru krawędzi 
+(w przykładzie 5). Czwarta część zawiera odpowiednią liczbę krawędzi zapisanych parami. 
+W przykładzie tymi pięcioma krawędziami są: (3, 5), (2, 5), (0, 2), (1, 3), (4, 5). Zakładamy, 
+że wierzchołki są numerowane od 0 kolejnymi liczbami naturalnymi.

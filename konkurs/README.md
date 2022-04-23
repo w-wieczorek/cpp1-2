@@ -9,8 +9,9 @@ Do instalacji serwera oraz jego uruchomienia potrzebna jest wirtualna maszyna Ja
 [JVM](https://pl.wikipedia.org/wiki/Wirtualna_maszyna_Javy). W czasie testów korzystaliśmy 
 z __OpenJDK Runtime Environment__ w wersji "18".
 
-Aby zainstalować serwer należy pobrać plik z repozytorium (z katalogu `serwer`) oraz zapisać
-na komputerze w dowolnym katalogu. Serwer jest gotowy do uruchomienia.
+Aby zainstalować serwer należy pobrać plik z repozytorium (z katalogu
+[`serwer`](https://w-wieczorek.github.io/cpp1-2/konkurs/serwer/serwer.jar))
+oraz zapisać na komputerze w dowolnym katalogu. Serwer jest gotowy do uruchomienia.
 
 ## Uruchomienie serwera
 

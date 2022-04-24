@@ -49,33 +49,31 @@ który na początku gry znajduje się w losowo wybranym wierzchołku grafu.
 
 Gracze A i B naprzemiennie wykonują ruchy, gdzie ruch polega na przesunięciu żetonu
 do jednego z sąsiednich wierzchołków, a następnie usunięciu krawędzi przez którą dokonano
-przesunięcia. Przegrywa gracz, który nie może wykonać przesunięcia, gdy na niego przypada 
+przesunięcia. Przegrywa gracz, który nie może wykonać przesunięcia, gdy na niego przypada
 ruch.
 
 ## Protokół komunikacyjny
 
-Protokół komunikacyjny oparty jest na standardowych gniazdkach sieciowych; każda komenda wysyłana z lub 
-do serwera powinna kończyć się znakiem nowej linii. Używane w protokole numery wierzchołków są zgodne 
+Protokół komunikacyjny oparty jest na standardowych gniazdkach sieciowych; każda komenda wysyłana z lub
+do serwera powinna kończyć się znakiem nowej linii. Używane w protokole numery wierzchołków są zgodne
 z losowym grafem generowanym każdorazowo przed rozpoczęciem gry.
 
 ### Żądania klienta (wysyłają programy grające w turnieju)
 
 ```
-100 [nazwa_gracza]  // Podłącz się jako gracz, "nazwa gracza" nie może zawierać białych znaków.
 210 [wierzchołek]   // Wyślij ruch, gdzie "wierzchołek" to numer kolejnego wierzchołka, na który 
                     // należy przesunąć żeton.
 ```
 
-Przykłady:
+Przykład:
 ```
-100 testowy_gracz
 210 17
 ```
 
 ### Odpowiedzi serwera
 
 ```
-200 [opis gry]     // Rozpoczęcie nowej gry; teraz Twoja kolej, wyślij komunikat 210.
+200 [opis gry]     // Rozpoczęcie gry; teraz Twoja kolej, wyślij komunikat 210.
 220 [wierzchołek]  // Wierzchołek wybrany przez przeciwnika, serwer oczekuje na Twój ruch.
 230                // Wygrałeś wg zasad.
 231                // Wygrałeś przez przekroczenie czasu (przeciwnika).

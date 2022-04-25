@@ -77,7 +77,6 @@ Przykład:
 220 [wierzchołek]  // Wierzchołek wybrany przez przeciwnika, serwer oczekuje na Twój ruch.
 230                // Wygrałeś wg zasad.
 231                // Wygrałeś przez przekroczenie czasu (przeciwnika).
-232                // Wygrałeś przez rozłączenie się przeciwnika.
 240                // Przegrałeś wg zasad.
 241                // Przegrałeś przez przekroczenie czasu.
 999 [opis]         // Błąd komendy, opis powinien wyjaśnić przyczynę.
@@ -96,3 +95,5 @@ w grafie (w ww. przykładzie 6). Druga część to numer wierzchołka, w którym
 (w przykładzie 5). Czwarta część zawiera odpowiednią liczbę krawędzi zapisanych parami. 
 W przykładzie tymi pięcioma krawędziami są: (3, 5), (2, 5), (0, 2), (1, 3), (4, 5). Zakładamy, 
 że wierzchołki są numerowane od 0 kolejnymi liczbami naturalnymi.
+
+Po otrzymaniu odpowiedzi 230 lub wyższej, klient powinien się rozłączyć.

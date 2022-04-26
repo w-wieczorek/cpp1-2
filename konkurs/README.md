@@ -13,6 +13,9 @@ Aby zainstalować serwer należy pobrać plik z repozytorium (z katalogu
 [`serwer`](https://w-wieczorek.github.io/cpp1-2/konkurs/serwer/serwer.jar))
 oraz zapisać na komputerze w dowolnym katalogu. Serwer jest gotowy do uruchomienia.
 
+Serwer napisany jest w języku [Scala](https://www.scala-lang.org/), a jego kod źródłowy można podejrzeć 
+na [githubie](https://github.com/w-wieczorek/serwer).
+
 ## Uruchomienie serwera
 
 ```

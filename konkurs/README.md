@@ -97,3 +97,116 @@ W przykładzie tymi pięcioma krawędziami są: (3, 5), (2, 5), (0, 2), (1, 3), 
 że wierzchołki są numerowane od 0 kolejnymi liczbami naturalnymi.
 
 Po otrzymaniu odpowiedzi 230 lub wyższej, klient powinien się rozłączyć.
+
+### Przykładowa rozgrywka
+
+<table>
+<tr>
+<th> Klient 1 </th>
+<th> Klient 2 </th>
+</tr>
+<tr>
+<td>
+
+```
+   
+  
+>java -jar klient.jar --ip 127.0.0.1 --port 8080   
+Received: 200 32 2 72 0 15 0 17 0 1 1 25 1 15 1 29 
+1 24 2 11 2 15 2 18 2 29 2 31 2 27 2 30 3 8 3 29   
+3 18 3 12 4 6 4 28 5 8 5 17 5 9 5 30 5 26 5 20 5 21
+6 24 6 29 6 23 6 26 6 21 7 23 7 13 8 11 8 31 8 14  
+9 27 9 30 9 29 10 28 10 11 11 31 11 24 12 24 13 20 
+13 18 13 26 14 17 14 25 14 15 15 30 15 16 15 31    
+16 30 17 20 17 18 18 24 18 19 18 23 19 25 19 27    
+20 22 20 31 20 25 21 22 21 31 22 26 23 29 24 25    
+26 28 28 31       
+Sent: 210 29      
+Received: 220 6   
+Sent: 210 4       
+Received: 220 28  
+Sent: 210 10      
+Received: 220 11  
+Sent: 210 8       
+Received: 220 5   
+Sent: 210 26      
+Received: 220 13  
+Sent: 210 7       
+Received: 220 23  
+Sent: 210 6       
+Received: 220 26  
+Sent: 210 28      
+Received: 220 31  
+Sent: 210 8       
+Received: 220 14  
+Sent: 210 17      
+Received: 220 18  
+Sent: 210 2       
+Received: 220 11  
+Sent: 210 24      
+Received: 220 18  
+Sent: 210 23      
+Received: 220 29  
+Sent: 210 1       
+Received: 220 25  
+Sent: 210 24      
+Received: 220 6   
+Sent: 210 21      
+Received: 220 31  
+Sent: 210 11      
+Received: 230     
+Wygrałem wg zasad.
+```
+
+</td>
+<td>
+
+```
+>java -jar klient.jar --ip 127.0.0.1 --port 8080
+Received: 200 32 29 71 0 15 0 17 0 1 1 25 1 15 
+1 29 1 24 2 11 2 15 2 18 2 31 2 27 2 30 3 8 3 29 
+3 18 3 12 4 6 4 28 5 8 5 17 5 9 5 30 5 26 5 20 
+5 21 6 24 6 29 6 23 6 26 6 21 7 23 7 13 8 11 
+8 31 8 14 9 27 9 30 9 29 10 28 10 11 11 31 11 24 
+12 24 13 20 13 18 13 26 14 17 14 25 14 15 15 30 
+15 16 15 31 16 30 17 20 17 18 18 24 18 19 18 23 
+19 25 19 27 20 22 20 31 20 25 21 22 21 31 22 26 
+23 29 24 25 26 28 28 31
+Sent: 210 6
+Received: 220 4
+Sent: 210 28
+Received: 220 10
+Sent: 210 11
+Received: 220 8
+Sent: 210 5
+Received: 220 26
+Sent: 210 13
+Received: 220 7
+Sent: 210 23
+Received: 220 6
+Sent: 210 26
+Received: 220 28
+Sent: 210 31
+Received: 220 8
+Sent: 210 14
+Received: 220 17
+Sent: 210 18
+Received: 220 2
+Sent: 210 11
+Received: 220 24
+Sent: 210 18
+Received: 220 23
+Sent: 210 29
+Received: 220 1
+Sent: 210 25
+Received: 220 24
+Sent: 210 6
+Received: 220 21
+Sent: 210 31
+Received: 240
+Przegrałem wg zasad.
+```
+
+</td>
+</tr>
+</table>

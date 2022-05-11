@@ -213,9 +213,9 @@ Przegrałem wg zasad.
 ```c++
 #include <iostream>
 #include <boost/asio.hpp>
-#include <utility>
 #include <vector>
-#include <chrono>
+#include <string>
+#include <boost/chrono.hpp>
 #include <random>
 #include <boost/graph/adjacency_list.hpp>
 
@@ -224,7 +224,7 @@ using boost::asio::ip::tcp;
 using namespace boost;
 
 int main(int argc, char* argv[]) {
-    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    unsigned seed = boost::chrono::system_clock::now().time_since_epoch().count();
     mt19937 gen32(seed);  // generator liczb pseudolosowych
     typedef adjacency_list<vecS, vecS, undirectedS> Graph;
     int zeton;
@@ -267,7 +267,7 @@ int main(int argc, char* argv[]) {
                 sasiedzi[k++] = *ai;
             }
             int odp = sasiedzi[gen32() % k];  // losowy ruch klienta
-            serwer << "210 " << odp << endl;
+            serwer << string("210 ") + to_string(odp) + string("\n");
             serwer.flush();
             remove_edge(zeton, odp, g);
             zeton = odp;

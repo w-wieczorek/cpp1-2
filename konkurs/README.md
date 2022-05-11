@@ -205,3 +205,217 @@ Przegrałem wg zasad.
 </td>
 </tr>
 </table>
+
+## Randomowe programy klienckie
+
+### C++
+
+```c++
+#include <iostream>
+#include <boost/asio.hpp>
+#include <utility>
+#include <vector>
+#include <chrono>
+#include <random>
+#include <boost/graph/adjacency_list.hpp>
+
+using namespace std;
+using boost::asio::ip::tcp;
+using namespace boost;
+
+int main(int argc, char* argv[]) {
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    mt19937 gen32(seed);  // generator liczb pseudolosowych
+    typedef adjacency_list<vecS, vecS, undirectedS> Graph;
+    int zeton;
+    if (argc != 3) {
+        cerr << "Uzycie: prog.exe adres_ip_serwera port" << endl;
+        return 1;
+    }
+    try {
+        tcp::iostream serwer(argv[1], argv[2]);  // proba nawiazania polaczenia z serwerem
+        if (!serwer) {
+            cout << "Polaczenie z serwerem nieudane." << endl;
+            return 1;
+        }
+        string komunikat;
+        getline(serwer, komunikat);
+        cout << "Odebralem: " << komunikat << endl;
+        vector<int> liczby;
+        stringstream ss(komunikat);
+        int liczba;
+        while (ss >> liczba) {
+            liczby.push_back(liczba);
+        }
+        int kod = liczby[0];
+        if (kod != 200) {
+            return 1;
+        }
+        Graph g(liczby[1]);
+        zeton = liczby[2];
+        int liczba_krawedzi = liczby[3];
+        for (int i = 0; i < liczba_krawedzi; i++) {
+            add_edge(liczby[4 + 2*i], liczby[5 + 2*i], g);
+        }
+        liczby.clear();
+        while (kod < 230) {
+            int sasiedzi[7];
+            int k = 0;
+            typename graph_traits<Graph>::adjacency_iterator ai;
+            typename graph_traits<Graph>::adjacency_iterator ai_end;
+            for (tie(ai, ai_end) = adjacent_vertices(zeton, g); ai != ai_end; ++ai) {
+                sasiedzi[k++] = *ai;
+            }
+            int odp = sasiedzi[gen32() % k];  // losowy ruch klienta
+            serwer << "210 " << odp << endl;
+            serwer.flush();
+            remove_edge(zeton, odp, g);
+            zeton = odp;
+            cout << "Wyslalem: 210 " << odp << endl;
+            ss.clear();
+            getline(serwer, komunikat);
+            cout << "Odebralem: " << komunikat << endl;
+            ss.str(komunikat);
+            ss >> kod;
+            if (kod == 220) {
+                int ruch;
+                ss >> ruch;
+                remove_edge(zeton, ruch, g);
+                zeton = ruch;
+            }
+        }
+        serwer.close();
+    }
+    catch (std::exception& e) {
+        cout << "Wyjatek: " << e.what() << endl;
+    }
+    return 0;
+}
+```
+
+### Scala
+
+```scala
+import java.net.Socket
+import java.io._
+import scalax.collection.GraphEdge.UnDiEdge
+import scalax.collection.mutable
+import scalax.collection.GraphPredef._
+import scala.annotation.tailrec
+import scala.language.postfixOps
+import scala.util.Random
+
+object Klient {
+  val help: String = """
+  |Usage: java -jar klient.jar arguments
+  |Where the allowed arguments are:
+  |  -h | --help          Show help
+  |  -i | --ip address    IP address of a server (required)
+  |  -p | --port number   Port to connect (required)
+  |""".stripMargin
+
+  def chooseOne[A](seq: List[A]): A = {
+    val n = seq.size
+    val r = Random.nextInt(n)
+    seq(r)
+  }
+
+  def quit(status: Int = 0, message: String = ""): Nothing = {
+    if (message.nonEmpty) println(s"ERROR: $message")
+    println(help)
+    sys.exit(status)
+  }
+
+  case class Args(ipAddress: Option[String], portNumber: Option[String])
+
+  def parseArgList(params: Array[String]): Args = {
+    @tailrec
+    def pa(params2: Seq[String], args: Args): Args = params2 match {
+      case Nil => args
+      case ("-h" | "--help") +: Nil => quit()
+      case ("-i" | "--ip") +: address +: tail =>
+        pa(tail, args.copy(ipAddress = Some(address)))
+      case ("-p" | "--port") +: number +: tail =>
+        pa(tail, args.copy(portNumber = Some(number)))
+      case _ => quit(1, s"Unrecognized argument ${params2.head}")
+    }
+
+    val argz = pa(params.toList, Args(None, None))
+    if (argz.ipAddress.isEmpty || argz.portNumber.isEmpty)
+      quit(1, "Must specify IP address and a port number.")
+    argz
+  }
+
+  def main(params: Array[String]): Unit = {
+    val argz = parseArgList(params)
+    val connection = new Socket(argz.ipAddress.get, argz.portNumber.get.toInt)
+    val outStream = connection.getOutputStream
+    val out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outStream)))
+    val inStream = new InputStreamReader(connection.getInputStream)
+    val in = new BufferedReader(inStream)
+    val regex = """^(\d\d\d)\s*((?<=\s).*)?\s*$"""r
+    var line = in.readLine
+    println(s"Received: $line")
+    var arr: Array[Int] = null
+    line match {
+      case regex(num, txt) =>
+        if(num == "200") {
+          arr = line.split(' ').map(_.toInt)
+        } else {
+          println("The game cannot be continued.")
+          sys.exit(1)
+        }
+      case _ =>
+        println("Unrecognized command.")
+        sys.exit(1)
+    }
+    val responseCode = arr(0)
+    var token = arr(2)
+    var counter = arr(3)
+    var j = 3
+    val graph = mutable.Graph[Int, UnDiEdge]()
+    for (n <- 0 until arr(1)) graph += n
+    while (counter > 0) {
+      j += 2
+      graph += arr(j - 1) ~ arr(j)
+      counter -= 1
+    }
+    def n(outer: Int): graph.NodeT = graph get outer
+    var responseOpt = Option((responseCode, ""))
+    while(responseOpt.isDefined && responseOpt.get._1 < 230) {
+      val neighbours = n(token).neighbors.toList
+      val nextNode: Int = chooseOne(neighbours).value
+      graph -= token ~ nextNode
+      token = nextNode
+      out.println(s"210 $nextNode")
+      out.flush()
+      println(s"Sent: 210 $nextNode")
+      line = in.readLine
+      println(s"Received: $line")
+      responseOpt = line match {
+        case regex(num, txt) => Option((num.toInt, txt))
+        case _ => None
+      }
+      if(responseOpt.isDefined) {
+        responseOpt.get._1 match {
+          case 220 =>
+            val opponentMove = responseOpt.get._2.trim.toInt
+            graph -= token ~ opponentMove
+            token = opponentMove
+          case 230 => println("Wygrałem wg zasad.")
+          case 231 => println("Wygrałem przez przekroczenie czasu (przeciwnika).")
+          case 240 => println("Przegrałem wg zasad.")
+          case 241 => println("Przegrałem przez przekroczenie czasu.")
+          case 999 => println(s"Błąd: ${responseOpt.get._2}")
+        }
+      } else {
+        println(s"Nierozpoznana komenda: $line")
+      }
+    }
+  }
+}
+```
+
+### C#
+
+Czekam na chętnego do napisania i podzielenia się z innymi...

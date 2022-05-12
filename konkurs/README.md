@@ -1,3 +1,17 @@
+- [Opis konkursu gry na grafie](#opis-konkursu-gry-na-grafie)
+  - [Instalacja serwera](#instalacja-serwera)
+  - [Uruchomienie serwera](#uruchomienie-serwera)
+  - [Turniej](#turniej)
+  - [Zasady gry](#zasady-gry)
+  - [Protokół komunikacyjny](#protokół-komunikacyjny)
+    - [Żądania klienta (wysyłają programy grające w turnieju)](#żądania-klienta-wysyłają-programy-grające-w-turnieju)
+    - [Odpowiedzi serwera](#odpowiedzi-serwera)
+    - [Przykładowa rozgrywka](#przykładowa-rozgrywka)
+  - [Randomowe programy klienckie](#randomowe-programy-klienckie)
+    - [C++](#c)
+    - [Scala](#scala)
+    - [C#](#c-1)
+
 # Opis konkursu gry na grafie
 
 Repozytorium zawiera program serwera służącego do rozegrania gier turniejowych w grze _Undirected edge geography_.

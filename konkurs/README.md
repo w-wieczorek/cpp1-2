@@ -310,121 +310,75 @@ int main(int argc, char* argv[]) {
 ### Scala
 
 ```scala
-import java.net.Socket
+import java.net._
 import java.io._
+import scala.io._
 import scalax.collection.GraphEdge.UnDiEdge
 import scalax.collection.mutable
 import scalax.collection.GraphPredef._
-import scala.annotation.tailrec
-import scala.language.postfixOps
 import scala.util.Random
+import scala.util.control.Breaks._
 
-object Klient {
-  val help: String = """
-  |Usage: java -jar klient.jar arguments
-  |Where the allowed arguments are:
-  |  -h | --help          Show help
-  |  -i | --ip address    IP address of a server (required)
-  |  -p | --port number   Port to connect (required)
-  |""".stripMargin
-
-  def chooseOne[A](seq: List[A]): A = {
-    val n = seq.size
-    val r = Random.nextInt(n)
-    seq(r)
+object RandomMove {
+  private def choose(token: Int, graph: mutable.Graph[Int, UnDiEdge]): Int = {
+    val neighbors = graph.get(token).neighbors.toList
+    Random.shuffle(neighbors).head.value
   }
 
-  def quit(status: Int = 0, message: String = ""): Nothing = {
-    if (message.nonEmpty) println(s"ERROR: $message")
-    println(help)
-    sys.exit(status)
+  def make(token: Int, graph: mutable.Graph[Int, UnDiEdge]): Int = {
+    val nextPosition = choose(token, graph)
+    graph -= token ~ nextPosition
+    nextPosition
   }
+}
 
-  case class Args(ipAddress: Option[String], portNumber: Option[String])
-
-  def parseArgList(params: Array[String]): Args = {
-    @tailrec
-    def pa(params2: Seq[String], args: Args): Args = params2 match {
-      case Nil => args
-      case ("-h" | "--help") +: Nil => quit()
-      case ("-i" | "--ip") +: address +: tail =>
-        pa(tail, args.copy(ipAddress = Some(address)))
-      case ("-p" | "--port") +: number +: tail =>
-        pa(tail, args.copy(portNumber = Some(number)))
-      case _ => quit(1, s"Unrecognized argument ${params2.head}")
-    }
-
-    val argz = pa(params.toList, Args(None, None))
-    if (argz.ipAddress.isEmpty || argz.portNumber.isEmpty)
-      quit(1, "Must specify IP address and a port number.")
-    argz
-  }
+object Main {
+  var server = "127.0.0.1"
+  var port = 8080
 
   def main(params: Array[String]): Unit = {
-    val argz = parseArgList(params)
-    val connection = new Socket(argz.ipAddress.get, argz.portNumber.get.toInt)
-    val outStream = connection.getOutputStream
-    val out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outStream)))
-    val inStream = new InputStreamReader(connection.getInputStream)
-    val in = new BufferedReader(inStream)
-    val regex = """^(\d\d\d)\s*((?<=\s).*)?\s*$"""r
-    var line = in.readLine
-    println(s"Received: $line")
-    var arr: Array[Int] = null
-    line match {
-      case regex(num, txt) =>
-        if(num == "200") {
-          arr = line.split(' ').map(_.toInt)
-        } else {
-          println("The game cannot be continued.")
-          sys.exit(1)
-        }
-      case _ =>
-        println("Unrecognized command.")
-        sys.exit(1)
-    }
-    val responseCode = arr(0)
-    var token = arr(2)
-    var counter = arr(3)
-    var j = 3
-    val graph = mutable.Graph[Int, UnDiEdge]()
-    for (n <- 0 until arr(1)) graph += n
-    while (counter > 0) {
-      j += 2
-      graph += arr(j - 1) ~ arr(j)
-      counter -= 1
-    }
-    def n(outer: Int): graph.NodeT = graph get outer
-    var responseOpt = Option((responseCode, ""))
-    while(responseOpt.isDefined && responseOpt.get._1 < 230) {
-      val neighbours = n(token).neighbors.toList
-      val nextNode: Int = chooseOne(neighbours).value
-      graph -= token ~ nextNode
-      token = nextNode
-      out.println(s"210 $nextNode")
-      out.flush()
-      println(s"Sent: 210 $nextNode")
-      line = in.readLine
-      println(s"Received: $line")
-      responseOpt = line match {
-        case regex(num, txt) => Option((num.toInt, txt))
-        case _ => None
+    try {
+      if(params.length == 2) {
+        server = params(0)
+        port = params(1).toInt
       }
-      if(responseOpt.isDefined) {
-        responseOpt.get._1 match {
-          case 220 =>
-            val opponentMove = responseOpt.get._2.trim.toInt
-            graph -= token ~ opponentMove
-            token = opponentMove
-          case 230 => println("Wygrałem wg zasad.")
-          case 231 => println("Wygrałem przez przekroczenie czasu (przeciwnika).")
-          case 240 => println("Przegrałem wg zasad.")
-          case 241 => println("Przegrałem przez przekroczenie czasu.")
-          case 999 => println(s"Błąd: ${responseOpt.get._2}")
+      val socket = new Socket(InetAddress.getByName(server), port)
+      lazy val in = new BufferedSource(socket.getInputStream).getLines
+      val out = new PrintStream(socket.getOutputStream)
+
+      println("Connected")
+
+      val graph = mutable.Graph[Int, UnDiEdge]()
+      var response = in.next()
+      println(s"Received: $response")
+      val divided = response.split(' ').map(_.toInt)
+      var statusCode = divided(0)
+      var token = divided(2)
+
+      breakable {
+        while (statusCode < 230) {
+          statusCode match {
+            case 200 =>
+              (0 until divided(1)).foreach(v => graph += v)
+              (4 until 2*divided(3) + 4 by 2).foreach(j => graph += divided(j) ~ divided(j+1))
+            case 220 =>
+              val newPosition = response.substring(4).stripTrailing.toInt
+              graph -= token ~ newPosition
+              token = newPosition
+            case _   => break
+          }
+          token = RandomMove.make(token, graph)
+          println(s"Send: 210 $token")
+          out.println(s"210 $token")
+          out.flush()
+          response = in.next()
+          println(s"Received: $response")
+          statusCode = response.substring(0, 3).toInt
         }
-      } else {
-        println(s"Nierozpoznana komenda: $line")
       }
+      socket.close()
+    } catch {
+      case ex: Exception => println(ex.getMessage)
     }
   }
 }

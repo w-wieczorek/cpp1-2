@@ -1,3 +1,5 @@
+# Opis konkursu gry na grafie
+
 - [Opis konkursu gry na grafie](#opis-konkursu-gry-na-grafie)
   - [Instalacja serwera](#instalacja-serwera)
   - [Uruchomienie serwera](#uruchomienie-serwera)
@@ -11,8 +13,6 @@
     - [C++](#c)
     - [Scala](#scala)
     - [C#](#c-1)
-
-# Opis konkursu gry na grafie
 
 Repozytorium zawiera program serwera służącego do rozegrania gier turniejowych w grze _Undirected edge geography_.
 Niniejszy opis zawiera zasady tej gry oraz protokół komunikacyjny, wg którego powinny działać programy klienckie.
@@ -432,4 +432,4 @@ object Klient {
 
 ### C#
 
-Czekam na chętnego do napisania i podzielenia się z innymi...
+[github.com/michalmrowiec/Game-on-the-graph](https://github.com/michalmrowiec/Game-on-the-graph)

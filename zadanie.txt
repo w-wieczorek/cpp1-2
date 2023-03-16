@@ -1,0 +1,13 @@
+Zestaw zadań do wykonania w danym dniu:
+- Montaż produktu A: wymaga umiejętności X, czas trwania: 2 godziny
+- Montaż produktu B: wymaga umiejętności Y, czas trwania: 3 godziny
+- Montaż produktu C: wymaga umiejętności Z, czas trwania: 4 godziny
+- Pakowanie produktu D: wymaga umiejętności X i Y, czas trwania: 1 godzina
+- Przygotowanie maszyny E: wymaga umiejętności Z, czas trwania: 2 godziny
+Zespół pracowników:
+- Pracownik 1: posiada umiejętności X i Z, dostępny w godzinach 8-12 oraz 14-18
+- Pracownik 2: posiada umiejętności Y, dostępny w godzinach 10-16
+- Pracownik 3: posiada umiejętności X i Y, dostępny w godzinach 9-13 oraz 15-19
+Dodatkowe ograniczenia:
+- Każde zadanie może być wykonywane tylko przez jednego pracownika w danym czasie.
+- Pracownicy nie mogą wykonywać zadań poza swoimi godzinami dostępności.

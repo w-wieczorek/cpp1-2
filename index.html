@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 { 
     Int x = 3; 
     Int y = 4; 
-    Expr z {add, 5, multiply, subtract, y, 1, x}; 
+    Expr z(add, 5, multiply, subtract, y, 1, x);
     cout << z.compute() << endl; // 14
     return 0; 
 } 

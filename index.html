@@ -9,7 +9,7 @@
     <div id="content"></div>
     
     <script>
-        const markdownContent = `
+        const markdownContent = "
 ## Zadanie 1. (na ocenę dostateczną)
 
 Zaprojektuj klasę `Int` w taki sposób, żeby poniższy kod się wykonał zgodnie z komentarzem.
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
     return 0; 
 } 
 ```
-        `;
+        ";
 
         document.getElementById('content').innerHTML = marked.parse(markdownContent);
     </script>

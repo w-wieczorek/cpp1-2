@@ -9,12 +9,12 @@
     <div id="content"></div>
     
     <script>
-        const markdownContent = "
+        const markdownContent = `
 ## Zadanie 1. (na ocenę dostateczną)
 
-Zaprojektuj klasę `Int` w taki sposób, żeby poniższy kod się wykonał zgodnie z komentarzem.
+Zaprojektuj klasę \`Int\` w taki sposób, żeby poniższy kod się wykonał zgodnie z komentarzem.
 
-```cpp
+\`\`\`cpp
 int main(int argc, char* argv[]) 
 { 
     Int x = 3; 
@@ -25,13 +25,13 @@ int main(int argc, char* argv[])
     cout << x + y << endl; // 15634 
     return 0; 
 } 
-```
+\`\`\`
 
 ## Zadanie 2. (na ocenę dobrą)
 
-Zaprojektuj klasy `Int` oraz `Expr` w taki sposób, żeby poniższy kod się wykonał zgodnie z komentarzem.
+Zaprojektuj klasy \`Int\` oraz \`Expr\` w taki sposób, żeby poniższy kod się wykonał zgodnie z komentarzem.
 
-```cpp
+\`\`\`cpp
 int main(int argc, char* argv[]) 
 { 
     Int x = 3; 
@@ -40,13 +40,13 @@ int main(int argc, char* argv[])
     cout << z.compute() << endl; // 14
     return 0; 
 } 
-```
+\`\`\`
 
 ## Zadanie 3. (na ocenę bardzo dobrą)
 
-Zaprojektuj klasy `Int` oraz `Expr` w taki sposób, żeby poniższy kod się wykonał zgodnie z komentarzem.
+Zaprojektuj klasy \`Int\` oraz \`Expr\` w taki sposób, żeby poniższy kod się wykonał zgodnie z komentarzem.
 
-```cpp
+\`\`\`cpp
 int main(int argc, char* argv[]) 
 { 
     Int x = 3; 
@@ -58,8 +58,8 @@ int main(int argc, char* argv[])
     cout << z.value << endl; // 11
     return 0; 
 } 
-```
-        ";
+\`\`\`
+        `;
 
         document.getElementById('content').innerHTML = marked.parse(markdownContent);
     </script>

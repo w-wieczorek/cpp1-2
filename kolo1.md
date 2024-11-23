@@ -16,6 +16,7 @@ reprezentowanej za pomocą zmiennych `s` i `p`.
 
 ```cpp
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() 
 { 
@@ -38,6 +39,7 @@ liczba) oraz `s2` i `p2` (druga liczba).
 
 ```cpp
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() 
 { 

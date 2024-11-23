@@ -41,6 +41,7 @@ się ona w typie `double`).
 ```cpp
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main() 
 { 

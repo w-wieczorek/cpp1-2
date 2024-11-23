@@ -11,27 +11,6 @@ zmienne reprezentują wartość `8000.0`.
 
 ## Zadanie 1. (na ocenę dostateczną)
 
-Uzupełnij program w taki sposób, aby na ekranie wypisywał wartość liczby
-reprezentowanej za pomocą zmiennych `s` i `p`.
-
-```cpp
-#include <stdio.h>
-#include <stdlib.h>
-
-int main() 
-{ 
-    char s[] = "71"; 
-    int p = -5; 
-    // Tu wstaw swój kod
-    // Na ekranie powinna pojawić się wartość 0.00071
-    return 0; 
-} 
-```
-
----
-
-## Zadanie 2. (na ocenę dobrą)
-
 Uzupełnij program w taki sposób, aby wyświetlił wynik dodawania dwóch
 liczb rzeczywistych (zakładamy, że zmieszczą się one w typie `double`)
 reprezentowanych odpowiednio za pomocą zmiennych `s1` i `p1` (pierwsza
@@ -47,6 +26,28 @@ int main()
     int p1 = -2, p2 = -3; 
     // Tu wstaw swój kod
     // Na ekranie powinna pojawić się wartość 9.739
+    return 0; 
+} 
+```
+
+---
+
+## Zadanie 2. (na ocenę dobrą)
+
+Uzupełnij program w taki sposób, aby na ekranie wypisywał wartość liczby
+reprezentowanej za pomocą zmiennych `s` i `p` (**nie** zakładamy, że zmieści 
+się ona w typie `double`).
+
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() 
+{ 
+    char s[] = "71"; 
+    int p = -5; 
+    // Tu wstaw swój kod
+    // Na ekranie powinna pojawić się wartość 0.00071
     return 0; 
 } 
 ```

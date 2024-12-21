@@ -12,10 +12,10 @@ int f(int n, int a[], int w[], int k)
 
 int main()
 {
-    int a[] = {2, 0, -1}  // f_{n + 3} = 2 f_{n + 2} - f_n
-    int w[] = {1, 2, 4}   // f_0 = 1, f_1 = 2, f_2 = 4
-    printf("%d", f(7, a, w, 3))  // f_7 czyli 54
-    return 0
+    int a[] = {2, 0, -1};  // f_{n + 3} = 2 f_{n + 2} - f_n
+    int w[] = {1, 2, 4};   // f_0 = 1, f_1 = 2, f_2 = 4
+    printf("%d", f(7, a, w, 3));  // f_7 czyli 54
+    return 0;
 }
 ```
 

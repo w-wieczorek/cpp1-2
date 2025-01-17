@@ -3,7 +3,7 @@
 - [Opis projektu na zaliczenie programowania w języku C/C++](#projekt-fillomino)
   - [Zasady łamigłówki Fillomino](#zasady-łamigłówki-fillomino)
     - [Rekwizyty](#rekwizyty)
-    - [Podstawowe definice](#podstawowe-definicje)
+    - [Podstawowe definicje](#podstawowe-definicje)
     - [Cel gry](#cel-gry)
   - [Warunki zaliczenia](#warunki-zaliczenia)
 

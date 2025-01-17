@@ -76,4 +76,4 @@ Napisać program konsolowy w języku C/C++, który ze standardowego wejścia odc
 Program nie może korzystać z żadnych dodatkowych bibliotek dynamicznych (pliki `.dll`, `.so`), ani statycznych (pliki `.lib`, `.a`, `.o`), a kod źródłowy powinien mieć postać jednego pliku tekstowego (plik `.c` lub `.cpp`) o długości do 1000 wierszy.
 
 Programy będą oceniane na podstawie trzech plansz: pierwsza będzie wypełniona w 75%,
-druga w 50%, a trzecia w 25%. Rozwiązanie w limicie czasowym pierwszej planszy daje ocenę dostateczną, drugiej —— dobrą, trzeciej —— bardzo dobrą.
+druga w 50%, a trzecia w 25%. Rozwiązanie w limicie czasowym pierwszej planszy daje ocenę dostateczną, drugiej – dobrą, trzeciej – bardzo dobrą.

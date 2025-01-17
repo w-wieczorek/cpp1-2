@@ -27,7 +27,7 @@ Przykład (kropka oznacza puste pole):
 
 ### Podstawowe definicje
 
-Pole _przyległe_ oznacza pole położone bezpośrednio nad, pod, z lewej, lub z prawej strony danego pola. _Spójny blok pól_ to grupa pól (co najmniej jedno pole), w której pierwsze pole jest przyległe do drugiego, drugie do trzeciego itd., aż do ostatniego pola danej grupy.
+Pole _przyległe_ oznacza pole położone bezpośrednio nad, pod, z lewej, lub z prawej strony danego pola. _Spójny blok pól_ to grupa pól (co najmniej jedno pole), w której drugie pole jest przyległe do pierwszego, trzecie do pierwszego lub drugiego, czwarte do pierwszego lub drugiego lub trzeciego itd., aż do ostatniego pola danej grupy.
 
 Przykład (pola oznaczone cyfrą 6 stanowią spójny blok pól, pola oznaczone cyfrą 3 nie stanowią spójnego bloku pól):
 ```

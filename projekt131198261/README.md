@@ -11,7 +11,7 @@
 
 ### Rekwizyty
 
-Kwadratowa plansza z 64 polami (8x8), liczby całkowite od 1 do 9. Plansza początkowo jest częściowo wypełniona liczbami, w taki sposób, że pole może być puste lub zawierać jedną liczbę.
+Kwadratowa plansza z 64 polami (8x8), liczby całkowite od 1 do 8. Plansza początkowo jest częściowo wypełniona liczbami, w taki sposób, że pole może być puste lub zawierać jedną liczbę.
 
 Przykład (kropka oznacza puste pole):
 ```
@@ -29,21 +29,21 @@ Przykład (kropka oznacza puste pole):
 
 Pole _przyległe_ oznacza pole położone bezpośrednio nad, pod, z lewej, lub z prawej strony danego pola. _Spójny blok pól_ to grupa pól (co najmniej jedno pole), w której drugie pole jest przyległe do pierwszego, trzecie do pierwszego lub drugiego, czwarte do pierwszego lub drugiego lub trzeciego itd., aż do ostatniego pola danej grupy.
 
-Przykład (pola oznaczone cyfrą 6 stanowią spójny blok pól, pola oznaczone cyfrą 3 nie stanowią spójnego bloku pól):
+Przykład (pola oznaczone cyfrą 6 stanowią spójny blok pól, pola oznaczone cyfrą 2 nie stanowią spójnego bloku pól):
 ```
 . . . . . . . .
 . . . 6 6 . . .
 . . 6 6 6 . . .
 . . . 6 . . . .
 . . . . . . . .
-. 3 . . . . . .
-. . 3 . . . . .
+. 2 . . . . . .
+. . 2 . . . . .
 . . . . . . . .
 ```
 
 ### Cel gry
 
-Wypełnić puste pola za pomocą liczb całkowitych (do dyspozycji mamy tylko liczby od 1 do 9, każda z nich może być użyta wielokrotnie lub ani razu) w taki sposób, aby każdy maksymalny spójny blok pól zawierających tę samą liczbę _n_ składał się dokładnie z _n_ pól.
+Wypełnić puste pola za pomocą liczb całkowitych (do dyspozycji mamy tylko liczby od 1 do 8, każda z nich może być użyta wielokrotnie lub ani razu) w taki sposób, aby każdy maksymalny spójny blok pól zawierających tę samą liczbę _n_ składał się dokładnie z _n_ pól.
 
 Przykład planszy początkowej:
 ```
@@ -75,5 +75,5 @@ Napisać program konsolowy w języku C/C++, który ze standardowego wejścia odc
 
 Program nie może korzystać z żadnych dodatkowych bibliotek dynamicznych (pliki `.dll`, `.so`), ani statycznych (pliki `.lib`, `.a`, `.o`), a kod źródłowy powinien mieć postać jednego pliku tekstowego (plik `.c` lub `.cpp`) o długości do 1000 wierszy.
 
-Programy będą oceniane na podstawie trzech plansz: pierwsza będzie wypełniona w 75%,
-druga w 50%, a trzecia w 25%. Rozwiązanie w limicie czasowym pierwszej planszy daje ocenę dostateczną, drugiej – dobrą, trzeciej – bardzo dobrą.
+Programy będą oceniane na podstawie trzech plansz: pierwsza będzie wypełniona w stopniu od 75% do 100%,
+druga w stopniu od 50% do 75%, a trzecia w stopniu od 25% do 50%. Rozwiązanie w limicie czasowym pierwszej planszy daje ocenę dostateczną, drugiej – dobrą, trzeciej – bardzo dobrą.

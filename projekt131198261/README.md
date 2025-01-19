@@ -73,7 +73,7 @@ Dopuszczalne rozwiązanie:
 
 Napisać program konsolowy w języku C/C++, który ze standardowego wejścia odczytuje początkową planszę (proszę przyjąć formatowanie wg powyższych przykładów), a na standardowym wyjściu wypisuje rozwiązanie. Limit czasowy wynosi 30 sekund.
 
-Program nie może korzystać z żadnych dodatkowych bibliotek dynamicznych (pliki `.dll`, `.so`), ani statycznych (pliki `.lib`, `.a`, `.o`), a kod źródłowy powinien mieć postać jednego pliku tekstowego (plik `.c` lub `.cpp`) o długości do 1000 wierszy.
+Program może korzystać z dodatkowych (ogólnie dostępnych w Internecie) bibliotek dynamicznych (pliki `.dll`, `.so`) lub statycznych (pliki `.lib`, `.a`, `.o`) pod warunkiem, że mamy dostęp do ich kodu źródłowego. Jeśli program ma postać więcej niż jednego pliku (plik `.c` lub `.cpp`), to powinien być zorganizowany w projekt, który da się skompilować za pomocą ogólnie dostępnego narzędzia (`dotnet build`, `make` itp. w zależności od systemu operacyjnego i polecanego kompilatora).
 
 Programy będą oceniane na podstawie trzech plansz: pierwsza będzie wypełniona w stopniu od 75% do 100%,
 druga w stopniu od 50% do 75%, a trzecia w stopniu od 25% do 50%. Rozwiązanie w limicie czasowym pierwszej planszy daje ocenę dostateczną, drugiej – dobrą, trzeciej – bardzo dobrą.

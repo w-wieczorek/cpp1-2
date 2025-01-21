@@ -71,7 +71,7 @@ Dopuszczalne rozwiązanie:
 
 ## Warunki zaliczenia
 
-Napisać program konsolowy w języku C/C++, który ze standardowego wejścia odczytuje początkową planszę (proszę przyjąć formatowanie wg powyższych przykładów), a na standardowym wyjściu wypisuje rozwiązanie. Limit czasowy wynosi 10 sekund.
+Napisać program konsolowy w języku C/C++, który ze standardowego wejścia odczytuje początkową planszę (proszę przyjąć formatowanie wg powyższych przykładów), a na standardowym wyjściu wypisuje rozwiązanie. Limit czasowy wynosi 30 sekund.
 
 Program może korzystać z dodatkowych (ogólnie dostępnych w Internecie) bibliotek pod warunkiem, że mamy dostęp do ich kodu źródłowego. Jeśli program ma postać więcej niż jednego pliku, to powinien być zorganizowany w projekt, który da się skompilować za pomocą ogólnie dostępnego narzędzia (`dotnet build`, `make` itp. w zależności od systemu operacyjnego i polecanego kompilatora).
 

@@ -1,0 +1,15 @@
+4 10
+1 . 2 X
+. X . X
+3 . . .
+. X . X
+pies
+kot
+ryba
+lura
+drut
+tata
+rata
+kara
+luty
+bak

@@ -41,6 +41,6 @@ Napisać program konsolowy w języku C, który ze standardowego wejścia odczytu
 
 Program może korzystać z dodatkowych (ogólnie dostępnych w Internecie) bibliotek pod warunkiem, że mamy dostęp do ich kodu źródłowego w języku C. Jeśli program ma postać więcej niż jednego pliku, to powinien być zorganizowany w projekt, który da się skompilować za pomocą ogólnie dostępnego narzędzia (`dotnet build`, `make` itp. w zależności od systemu operacyjnego i polecanego kompilatora).
 
-Programy będą oceniane na podstawie trzech diagramów: 4x4 oraz do 10 słów w zbiorze; 8x8 oraz do 300 słów w zbiorze, 16x16 oraz do 2000 słów w zbiorze. Rozwiązanie w limicie czasowym pierwszej krzyżówki daje ocenę dostateczną, drugiej – dobrą, trzeciej – bardzo dobrą.
+Programy będą oceniane na podstawie trzech diagramów: 4x4 oraz do 10 słów w zbiorze; 8x8 oraz do 800 słów w zbiorze, 16x16 oraz do 2000 słów w zbiorze. Rozwiązanie w limicie czasowym pierwszej krzyżówki daje ocenę dostateczną, drugiej – dobrą, trzeciej – bardzo dobrą.
 
 Przykładowe dane testowe: [`we4.txt`](https://w-wieczorek.github.io/cpp1-2/konkurs/we4.txt), [`we8.txt`](https://w-wieczorek.github.io/cpp1-2/konkurs/we8.txt), [`we16.txt`](https://w-wieczorek.github.io/cpp1-2/konkurs/we16.txt). 

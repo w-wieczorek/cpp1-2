@@ -2,7 +2,7 @@
 
 ## Cel
 
-Napisać program w języku C, który dla danej dodatniej nieparzystej liczby całkowitej `n`, utworzy losowe drzewo binarne składające się z `n` wierzchołków, a następnie utworzy rysunek tego drzewa w formacie SVG (ang. Scalable Vector Graphics).
+Napisać program w języku C, który dla danej dodatniej nieparzystej liczby całkowitej _n_, utworzy losowe drzewo binarne składające się z _n_ wierzchołków, a następnie utworzy rysunek tego drzewa w formacie SVG (ang. Scalable Vector Graphics).
 
 ### Podstawowe definicje
 

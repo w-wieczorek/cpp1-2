@@ -31,11 +31,12 @@ Główną ideę tego algorytmu ilustruje poniższy rysunek:
 
 Wskazuje on, że większe poddrzewo (w sensie większej liczby wierzchołków) rysowane jest z prawej strony mniejszego poddrzewa.
 
-Sam algorytm może być sformułowany w postaci prostej dwupunktowej procedury:
+Sam algorytm może być sformułowany w postaci prostej trójpunktowej procedury:
 
 1. Rekursywnie skonstruuj rysunki lewego i prawego poddrzewa wejściowego drzewa _T_.
 2. Zgodnie z powyższym rysunkiem, korzeń umieść w punkcie (_x_, _y_), mniejsze poddrzewo umieść w prostokącie, którego lewy górny róg znajduje się w punkcie (_x_, _y_-1), natomiast większe poddrzewo umieść w prostokącie, którego lewy górny róg znajduje się w punkcie (_x_+_w_+1, _y_), gdzie _w_ jest szerokością rysunku mniejszego poddrzewa.
-
+3. Narysuj odcinek pionowy łączący korzeń drzewa umieszczony w punkcie (_x_, _y_) z korzeniem poddrzewa umieszczonym w punkcie (_x_, _y_-1) oraz narysuj odcinek poziomy łączący korzeń drzewa umieszczony w punkcie (_x_, _y_) z korzeniem poddrzewa umieszczonym w punkcie (_x_+_w_+1, _y_).
+ 
 Na przykład dla drzewa (_A_, (_B_, _C_, _E_), (_D_, (_G_, _H_, _I_), _F_)) właściwym rysunkiem jest:
 
 ![HV-Tree](hvtree.svg)

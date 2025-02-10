@@ -17,7 +17,7 @@ Wierzchołek _A_ jest korzeniem całego drzewa; jego liśćmi są wierzchołki: 
 ### Algorytm tworzenia losowego drzewa dla zbioru liczb {1,...,n}
 
 1. Jeśli wejściowy zbiór składa się z jednej liczby, { _j_ }, utwórz liść _j_ i zwróć go jako drzewo. W przeciwnym razie idź do punktu 2.
-2. W wejściowym zbiorze { _i_ ,..., _j_ ,... ,_k_ } wyznacz losowo element środkowy _j_ w taki sposób, aby w obydwu zbiorach: _z_<sub>1</sub> = { _i_ ,..., _j_-1 } i _z_<sub>2</sub> = { _j_+1 ,..., _k_ } była nieparzysta liczba elementów.
+2. W wejściowym zbiorze { _i_ ,..., _j_ ,..., _k_ } wyznacz losowo element środkowy _j_ w taki sposób, aby w obydwu zbiorach: _z_<sub>1</sub> = { _i_ ,..., _j_-1 } i _z_<sub>2</sub> = { _j_+1 ,..., _k_ } była nieparzysta liczba elementów.
 3. Stwórz drzewo _lewe_ idąc do punktu 1. ze zbiorem _z_<sub>1</sub> i stwórz drzewo _prawe_ idąc do punktu 1. ze zbiorem _z_<sub>2</sub>.
 4. Zwróć drzewo ( _j_, _lewe_, _prawe_ ).
 

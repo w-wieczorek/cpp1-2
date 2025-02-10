@@ -35,7 +35,7 @@ Sam algorytm może być sformułowany w postaci prostej trójpunktowej procedury
 
 1. Rekursywnie skonstruuj rysunki lewego i prawego poddrzewa wejściowego drzewa.
 2. Zgodnie z powyższym rysunkiem, korzeń umieść w punkcie ( _x_, _y_ ), mniejsze poddrzewo umieść w prostokącie, którego lewy górny róg znajduje się w punkcie ( _x_, _y_-1 ), natomiast większe poddrzewo umieść w prostokącie, którego lewy górny róg znajduje się w punkcie ( _x_+_w_+1, _y_ ), gdzie _w_ jest szerokością rysunku mniejszego poddrzewa.
-3. Narysuj odcinek pionowy łączący korzeń drzewa umieszczony w punkcie ( _x_, _y_ ) z korzeniem poddrzewa umieszczonym w punkcie ( _x_, _y_-1 ) oraz narysuj odcinek poziomy łączący korzeń drzewa umieszczony w punkcie ( _x_, _y_ ) z korzeniem poddrzewa umieszczonym w punkcie ( _x_+_w_+1, _y_ )$.
+3. Narysuj odcinek pionowy łączący korzeń drzewa umieszczony w punkcie ( _x_, _y_ ) z korzeniem poddrzewa umieszczonym w punkcie ( _x_, _y_-1 ) oraz narysuj odcinek poziomy łączący korzeń drzewa umieszczony w punkcie ( _x_, _y_ ) z korzeniem poddrzewa umieszczonym w punkcie ( _x_+_w_+1, _y_ ).
  
 Na przykład dla drzewa (4, (2, 1, 3), (8, (6, 5, 7), 9)) właściwym rysunkiem jest:
 

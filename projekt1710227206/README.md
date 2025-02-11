@@ -43,4 +43,4 @@ Na przykład dla drzewa (4, (2, 1, 3), (8, (6, 5, 7), 9)) właściwym rysunkiem 
 
 ## Warunki zaliczenia
 
-Napisać program konsolowy w języku C, który odczytuje dodatnią liczbę nieparzystą, tworzy wg powyższego (pierwszego) algorytmu losowe drzewo binarne, a następnie zapisuje je w pliku dowolna_nazwa.svg korzystając z drugiego algorytmu. Można wykorzystać dowolną bibliotekę dostępną dla języka C. Program ma działać pod kontrolą systemu operacyjnego Linux lub Windows. Jako rozwiązanie przesyłamy plik źródłowy naszego programu, instrukcję jak go kompilować i skąd pobrać potrzebne biblioteki. 
+Napisać program konsolowy w języku C, który odczytuje dodatnią liczbę nieparzystą 1 ≤ _n_ ≤ 199, tworzy wg powyższego (pierwszego) algorytmu losowe drzewo binarne, a następnie zapisuje je w pliku dowolna_nazwa.svg korzystając z drugiego algorytmu. Można wykorzystać dowolną bibliotekę dostępną dla języka C. Program ma działać pod kontrolą systemu operacyjnego Linux lub Windows. Jako rozwiązanie przesyłamy plik źródłowy naszego programu, instrukcję jak go kompilować i skąd pobrać potrzebne biblioteki. 

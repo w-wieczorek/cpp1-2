@@ -12,6 +12,7 @@
   - [Randomowe programy klienckie](#randomowe-programy-klienckie)
     - [C++](#c)
     - [C#](#c-1)
+  - [Warunki zaliczenia](#warunki-zaliczenia)
 
 Repozytorium zawiera program serwera służącego do rozegrania gier turniejowych w grze _Krążki_.
 Niniejszy opis zawiera zasady tej gry oraz protokół komunikacyjny, wg którego powinny działać programy klienckie.
@@ -26,7 +27,7 @@ Serwer napisany jest w języku C# z wykorzystaniem [Avalonia UI](https://avaloni
 
 ## Uruchomienie serwera
 
-Najpierw w katalogu, gdzie mamy program `SerwerKrazki.exe` tworzymy podkatalog `Programy` oraz plik `gracze.jsonl`. W katalogu `Programy` umieszczamy pliki wykonywalne (`.exe`) programów, które wezmą udział w turnieju. Następnie tworzymy plik `gracze.jsonl` wg poniższego schematu:
+Najpierw w katalogu, gdzie mamy program `SerwerKrazki.exe` tworzymy podkatalog `Programy` oraz plik `gracze.jsonl`. W katalogu `Programy` umieszczamy pliki wykonywalne (`.exe`) programów, które wezmą udział w turnieju oraz wymagane dla ich działania pliki `.dll` (o ile jakieś są potrzebne). Następnie tworzymy plik `gracze.jsonl` wg poniższego schematu:
 ```
 {"name": "Adam", "surname": "Kowalski", "program": "s12345.exe"}
 {"name": "Ewa", "surname": "Gołąb", "program": "s20006.exe"}
@@ -68,7 +69,7 @@ Protokół komunikacyjny oparty jest na odczytywaniu i zapisywaniu łańcuchów 
 ### Żądania klienta (wysyłają programy grające w turnieju)
 
 ```
-210 [numer sterty] [stan sterty]   // Wyślij ruch, gdzie "numer stery" określa skąd,
+210 [numer sterty] [stan sterty]   // Wyślij ruch, gdzie "numer stery" określa skąd
                                    // zdejmujemy krążki.
 ```
 
@@ -297,3 +298,7 @@ int main(int argc, char* argv[]) {
 ### C#
 
 [github.com/michalmrowiec/Game-on-the-graph](https://github.com/michalmrowiec/Game-on-the-graph)
+
+## Warunki zaliczenia
+
+Programy grające w krążki powinny być napisane w języku C++. Ocena zaliczeniowa tego projektu zależy od liczby zdobytych punktów w turnieju. Autor programu, który uzyskał największą liczbę punktów (takich osób może być kilka) uzyskuje ocenę bardzo dobrą. Autor programu, który uzyskał najmniejszą liczbę punktów (takich osób może być kilka) uzyskuje ocenę dostateczną. Dla reszty osób oceny wyznaczone zostaną proporcjonalnie do liczby zdobytych punktów. W turnieju wezmą udział: randomowe programy klienckie oraz prowadzący zajęcia.

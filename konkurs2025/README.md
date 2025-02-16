@@ -63,7 +63,7 @@ Taki stan początkowy byłby reprezentowany za pomocą łańcucha `|cbbcb|bcc|`.
 
 ## Protokół komunikacyjny
 
-Protokół komunikacyjny oparty jest na odczytywaniu i zapisywaniu łańcuchów ze standardowego we/wy; każda komenda wysyłana z lub do serwera (za pośrednictwem `cin` i `cout`) powinna kończyć się znakiem nowej linii (`endl`). Używany w protokole stan początkowy krążków jest zgodne z losowym ich uporządkowaniem generowanym każdorazowo przed rozpoczęciem gry.
+Protokół komunikacyjny oparty jest na odczytywaniu i zapisywaniu łańcuchów ze standardowego we/wy; każda komenda wysyłana z lub do serwera (za pośrednictwem `cin` i `cout`) powinna kończyć się znakiem nowej linii (`endl`). Używany w protokole stan początkowy krążków jest zgodny z losowym ich uporządkowaniem generowanym każdorazowo przed rozpoczęciem gry.
 
 ### Żądania klienta (wysyłają programy grające w turnieju)
 
@@ -96,7 +96,9 @@ Przykłady:
 230
 ```
 
-Opis gry składa się z dwóch części. Pierwsza część to znak (`b` lub `c`) informujący, jakim kolorem grasz (białe lub czarne). Druga część opisuje kolejność ułożenia krążków na poszczególnych stertach
+Opis gry składa się z dwóch części. Pierwsza część to znak (`b` lub `c`) informujący, jakim kolorem grasz (białe lub czarne). Druga część opisuje kolejność ułożenia krążków na poszczególnych stertach.
+
+Limit czasowy na wysłanie swojego pierwszego i każdego kolejnego ruchu wynosi 200ms na ruch.
 
 Po otrzymaniu odpowiedzi 230 lub wyższej, klient powinien zakończyć działanie.
 

@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="41.554562mm"
+   height="18.722334mm"
+   viewBox="0 0 41.554562 18.722334"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
@@ -26,8 +26,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.4324916"
-     inkscape:cx="188.13374"
-     inkscape:cy="397.55906"
+     inkscape:cx="18.848278"
+     inkscape:cy="15.706898"
      inkscape:window-width="1920"
      inkscape:window-height="991"
      inkscape:window-x="-9"
@@ -36,7 +36,9 @@
      inkscape:current-layer="layer1">
     <inkscape:grid
        type="xygrid"
-       id="grid4285" />
+       id="grid4285"
+       originx="-28.59025"
+       originy="-101.20898" />
   </sodipodi:namedview>
   <defs
      id="defs2">
@@ -52,9 +54,9 @@
        inkscape:collect="always"
        xlink:href="#linearGradient1297"
        id="linearGradient1299"
-       x1="55.113066"
+       x1="55.113068"
        y1="117.93512"
-       x2="72.356126"
+       x2="72.356125"
        y2="117.93512"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.1123011,0,0,0.99026432,-32.510091,-2.4996755)" />
@@ -64,9 +66,9 @@
        id="linearGradient4283"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.1123011,0,0,0.99026432,-32.556266,-6.2398807)"
-       x1="55.113066"
+       x1="55.113068"
        y1="117.93512"
-       x2="72.356126"
+       x2="72.356125"
        y2="117.93512" />
     <linearGradient
        inkscape:collect="always"
@@ -74,9 +76,9 @@
        id="linearGradient4312"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.1123011,0,0,0.99026432,-32.556267,-13.858817)"
-       x1="55.113066"
+       x1="55.113068"
        y1="117.93512"
-       x2="72.356126"
+       x2="72.356125"
        y2="117.93512" />
     <linearGradient
        inkscape:collect="always"
@@ -84,15 +86,16 @@
        id="linearGradient4328"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.1123011,0,0,0.99026432,-10.115035,1.4252313)"
-       x1="55.113066"
+       x1="55.113068"
        y1="117.93512"
-       x2="72.356126"
+       x2="72.356125"
        y2="117.93512" />
   </defs>
   <g
      inkscape:label="Warstwa 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-28.590249,-101.20898)">
     <rect
        style="opacity:1;fill:#565656;fill-opacity:1;stroke:#808080;stroke-width:0.587836;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect1163"
@@ -104,14 +107,6 @@
        inkscape:transform-center-x="0.046517973"
        inkscape:transform-center-y="0.13842399"
        ry="1.4252529" />
-    <rect
-       style="fill:url(#linearGradient1299);fill-opacity:1;stroke:#808080;stroke-width:0.592973;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:16;stroke-dasharray:none;stroke-dashoffset:0;paint-order:normal"
-       id="rect1163-9"
-       width="18.474287"
-       height="2.84531"
-       x="28.939381"
-       y="112.8646"
-       ry="1.422655" />
     <rect
        style="fill:url(#linearGradient1299);fill-opacity:1;stroke:#808080;stroke-width:0.592973;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:16;stroke-dasharray:none;stroke-dashoffset:0;paint-order:normal"
        id="rect4267"

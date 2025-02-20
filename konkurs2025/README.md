@@ -11,7 +11,6 @@
     - [Przykładowa rozgrywka](#przykładowa-rozgrywka)
   - [Randomowe programy klienckie](#randomowe-programy-klienckie)
     - [C++](#c)
-    - [C#](#c-1)
   - [Warunki zaliczenia](#warunki-zaliczenia)
 
 Repozytorium zawiera program serwera służącego do rozegrania gier turniejowych w grze _Krążki_.
@@ -29,11 +28,11 @@ Serwer napisany jest w języku C# z wykorzystaniem [Avalonia UI](https://avaloni
 
 Najpierw w katalogu, gdzie mamy program `SerwerKrazki.exe` tworzymy podkatalog `Programy` oraz plik `gracze.jsonl`. W katalogu `Programy` umieszczamy pliki wykonywalne (`.exe`) programów, które wezmą udział w turnieju oraz wymagane dla ich działania pliki `.dll` (o ile jakieś są potrzebne). Następnie tworzymy plik `gracze.jsonl` wg poniższego schematu:
 ```
-{"name": "Adam", "surname": "Kowalski", "program": "s12345.exe"}
-{"name": "Ewa", "surname": "Gołąb", "program": "s20006.exe"}
-{"name": "Bartłomiej", "surname": "Kluska", "program": "s32347.exe"}
-{"name": "Magdalena", "surname": "Piekarska", "program": "s42347.exe"}
-{"name": "Rafał", "surname": "Żywczok", "program": "s92399.exe"}
+{"Name": "Adam", "Surname": "Kowalski", "Program": "s12345.exe"}
+{"Name": "Ewa", "Surname": "Gołąb", "Program": "s20006.exe"}
+{"Name": "Bartłomiej", "Surname": "Kluska", "Program": "s32347.exe"}
+{"Name": "Magdalena", "Surname": "Piekarska", "Program": "s42347.exe"}
+{"Name": "Rafał", "Surname": "Żywczok", "Program": "s92399.exe"}
 ```
 
 Po czym można uruchomić aplikację i rozpocząć turniej odpowiednim przyciskiem. Serwer w oddzielnych wątkach będzie uruchamiał poszczególne pary programów i przekazywał ich komunikaty.
@@ -41,20 +40,19 @@ Po czym można uruchomić aplikację i rozpocząć turniej odpowiednim przyciski
 ## Turniej
 
 Turniej składa się z rund, których liczba wyliczana jest w zależności od liczby zawodników i preferencji uczestników. Rundy składają się z gier. Kolejne gry oraz rundy uruchamiane są automatycznie.
-Turniej zostanie rozegrany systemem, który da się przedstawić na przykładzie z siedmioma zawodnikami i czterema rundami:
+Turniej zostanie rozegrany systemem, który da się przedstawić na przykładzie z siedmioma zawodnikami i trzema rundami:
 
 |z1|z2|z3|z4|z5|z6|z7|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |2|3|4|5|6|7|1|
 |3|4|5|6|7|1|2|
 |4|5|6|7|1|2|3|
-|5|6|7|1|2|3|4|
 
 Numer zawodnika (`z1`, `z2` itd.) losowany jest przed rozpoczęciem turnieju.
 
 ## Zasady gry
 
-Rekwizytami są są białe i czarne krążki ułożone w dziesięciu stertach. Liczba krążków w stercie nie przekracza 30. Ruch polega na wybraniu jednego z krążków własnego koloru z dowolnej sterty, a następnie zdjęciu go wraz ze wszystkimi krążkami leżącymi nad nim. Zdjęte krążki nie uczestniczą już w dalszej grze. Przegrywa ten, kto nie może wykonać ruchu.
+Rekwizytami są są białe i czarne krążki ułożone w dziesięciu stertach. Liczba krążków w stercie nie przekracza 40. Ruch polega na wybraniu jednego z krążków własnego koloru z dowolnej niepustej sterty, a następnie zdjęciu go wraz ze wszystkimi krążkami leżącymi nad nim. Zdjęte krążki nie uczestniczą już w dalszej grze. Przegrywa ten, kto nie może wykonać ruchu.
 
 Na poniższym przykładzie mamy tylko dwie sterty, które posłużą do zilustrowania przebiegu gry oraz przyjętej notacji zapisywania ruchów. 
 
@@ -92,7 +90,7 @@ Przykład:
 
 Przykłady:
 ```
-200 c |ccb|bcbc|bbbb|cbcccb|bbbccc|bcb|ccccb|bcbcbbccb|b|cbcbcccb|
+200 c |ccb|bcbc|bbbb|cbcccb|bbbccc|bcb|ccccb|bcbcbbccb||cbcbcccb|
 220 3 cbccc
 230
 ```
@@ -105,108 +103,54 @@ Po otrzymaniu odpowiedzi 230 lub wyższej, klient powinien zakończyć działani
 
 ### Przykładowa rozgrywka
 
-<table>
-<tr>
-<th> Klient 1 </th>
-<th> Klient 2 </th>
-</tr>
-<tr>
-<td><pre>
->java -jar klient.jar --ip 127.0.0.1 --port 8080
-Received: 200 32 2 72 0 15 0 17 0 1 1 25 1 15 1 29
-1 24 2 11 2 15 2 18 2 29 2 31 2 27 2 30 3 8 3 29
-3 18 3 12 4 6 4 28 5 8 5 17 5 9 5 30 5 26 5 20 5 21
-6 24 6 29 6 23 6 26 6 21 7 23 7 13 8 11 8 31 8 14
-9 27 9 30 9 29 10 28 10 11 11 31 11 24 12 24 13 20
-13 18 13 26 14 17 14 25 14 15 15 30 15 16 15 31
-16 30 17 20 17 18 18 24 18 19 18 23 19 25 19 27
-20 22 20 31 20 25 21 22 21 31 22 26 23 29 24 25
-26 28 28 31
-Sent: 210 29
-Received: 220 6
-Sent: 210 4
-Received: 220 28
-Sent: 210 10
-Received: 220 11
-Sent: 210 8
-Received: 220 5
-Sent: 210 26
-Received: 220 13
-Sent: 210 7
-Received: 220 23
-Sent: 210 6
-Received: 220 26
-Sent: 210 28
-Received: 220 31
-Sent: 210 8
-Received: 220 14
-Sent: 210 17
-Received: 220 18
-Sent: 210 2
-Received: 220 11
-Sent: 210 24
-Received: 220 18
-Sent: 210 23
-Received: 220 29
-Sent: 210 1
-Received: 220 25
-Sent: 210 24
-Received: 220 6
-Sent: 210 21
-Received: 220 31
-Sent: 210 11
-Received: 230
-Wygrałem wg zasad.
-</pre>
-</td>
-<td><pre>
->java -jar klient.jar --ip 127.0.0.1 --port 8080
-Received: 200 32 29 71 0 15 0 17 0 1 1 25 1 15
-1 29 1 24 2 11 2 15 2 18 2 31 2 27 2 30 3 8 3 29
-3 18 3 12 4 6 4 28 5 8 5 17 5 9 5 30 5 26 5 20
-5 21 6 24 6 29 6 23 6 26 6 21 7 23 7 13 8 11
-8 31 8 14 9 27 9 30 9 29 10 28 10 11 11 31 11 24
-12 24 13 20 13 18 13 26 14 17 14 25 14 15 15 30
-15 16 15 31 16 30 17 20 17 18 18 24 18 19 18 23
-19 25 19 27 20 22 20 31 20 25 21 22 21 31 22 26
-23 29 24 25 26 28 28 31
-Sent: 210 6
-Received: 220 4
-Sent: 210 28
-Received: 220 10
-Sent: 210 11
-Received: 220 8
-Sent: 210 5
-Received: 220 26
-Sent: 210 13
-Received: 220 7
-Sent: 210 23
-Received: 220 6
-Sent: 210 26
-Received: 220 28
-Sent: 210 31
-Received: 220 8
-Sent: 210 14
-Received: 220 17
-Sent: 210 18
-Received: 220 2
-Sent: 210 11
-Received: 220 24
-Sent: 210 18
-Received: 220 23
-Sent: 210 29
-Received: 220 1
-Sent: 210 25
-Received: 220 24
-Sent: 210 6
-Received: 220 21
-Sent: 210 31
-Received: 240
-Przegrałem wg zasad.
-</pre>
-</td>
-</tr>
-</table>
+```
+Do z2: 200 b |cbcb|bbbb|bcbcb|cbc|bbbbbb|cccbb|bcbbbcc|cbcbc|ccc|cbcb|
+Od z2: 210 6
+Do z1: 200 c |cbcb|bbbb|bcbcb|cbc|bbbbbb|cccbb||cbcbc|ccc|cbcb|
+Od z1: 210 2 bcb
+Do z2: 220 2 bcb
+Od z2: 210 4
+Do z1: 220 4
+Od z1: 210 7 cbcb
+Do z2: 220 7 cbcb
+Od z2: 210 5 cccb
+Do z1: 220 5 cccb
+Od z1: 210 0 cb
+Do z2: 220 0 cb
+Od z2: 210 5 ccc
+Do z1: 220 5 ccc
+Od z1: 210 7 cb
+Do z2: 220 7 cb
+Od z2: 210 0 c
+Do z1: 220 0 c
+Od z1: 210 9 cb
+Do z2: 220 9 cb
+Od z2: 210 1 bb
+Do z1: 220 1 bb
+Od z1: 210 2 b
+Do z2: 220 2 b
+Od z2: 210 7 c
+Do z1: 220 7 c
+Od z1: 210 3 cb
+Do z2: 220 3 cb
+Od z2: 210 3 c
+Do z1: 220 3 c
+Od z1: 210 9
+Do z2: 220 9
+Od z2: 210 2
+Do z1: 220 2
+Od z1: 210 0
+Do z2: 220 0
+Od z2: 210 1 b
+Do z1: 220 1 b
+Od z1: 210 3
+Do z2: 220 3
+Od z2: 210 1
+Do z1: 220 1
+Od z1: 210 5 cc
+Do z2: 240
+Do z1: 230
+```
 
 ## Randomowe programy klienckie
 
@@ -214,91 +158,99 @@ Przegrałem wg zasad.
 
 ```c++
 #include <iostream>
-#include <boost/asio.hpp>
-#include <vector>
+#include <sstream>
 #include <string>
-#include <boost/chrono.hpp>
 #include <random>
-#include <boost/graph/adjacency_list.hpp>
+#include <chrono>
 
 using namespace std;
-using boost::asio::ip::tcp;
-using namespace boost;
+
+char moj_kolor;
+string sterty[10];
+
+mt19937 gen32;  // generator liczb pseudolosowych
+
+typedef struct {
+    int nr;
+    string sterta;
+} ruch;
+
+void losowy_ruch(ruch &r) {
+	int i, j, licznik = 0;
+	for (i = 0; i < 10; i++) {
+        const int num_items = count(sterty[i].cbegin(), sterty[i].cend(), moj_kolor);
+		licznik += num_items;
+	}
+	int wylosowany = gen32() % licznik;
+	licznik = 0;
+	for (i = 0; i < 10; i++) {
+		const int num_items = count(sterty[i].cbegin(), sterty[i].cend(), moj_kolor);
+		licznik += num_items;
+		if (licznik > wylosowany) {
+			r.nr = i;
+			licznik -= num_items;
+            j = 0;
+			while (licznik <= wylosowany) {
+				if (sterty[i][j++] == moj_kolor)
+				    licznik++;
+            }
+			r.sterta = sterty[i].substr(0, j-1);
+			break;
+		}
+	}
+}
 
 int main(int argc, char* argv[]) {
-    unsigned seed = boost::chrono::system_clock::now().time_since_epoch().count();
-    mt19937 gen32(seed);  // generator liczb pseudolosowych
-    typedef adjacency_list<vecS, vecS, undirectedS> Graph;
-    int zeton;
-    if (argc != 3) {
-        cerr << "Uzycie: prog.exe adres_ip_serwera port" << endl;
+    auto seed_value = chrono::system_clock::now().time_since_epoch().count();
+    gen32.seed(seed_value);
+    string komunikat;
+    getline(cin, komunikat);
+    stringstream ss(komunikat);
+    int kod;
+    ss >> kod;
+    if (kod != 200) {
         return 1;
     }
-    try {
-        tcp::iostream serwer(argv[1], argv[2]);  // proba nawiazania polaczenia z serwerem
-        if (!serwer) {
-            cout << "Polaczenie z serwerem nieudane." << endl;
-            return 1;
-        }
-        string komunikat;
-        getline(serwer, komunikat);
-        cout << "Odebralem: " << komunikat << endl;
-        vector<int> liczby;
-        stringstream ss(komunikat);
-        int liczba;
-        while (ss >> liczba) {
-            liczby.push_back(liczba);
-        }
-        int kod = liczby[0];
-        if (kod != 200) {
-            return 1;
-        }
-        Graph g(liczby[1]);
-        zeton = liczby[2];
-        int liczba_krawedzi = liczby[3];
-        for (int i = 0; i < liczba_krawedzi; i++) {
-            add_edge(liczby[4 + 2*i], liczby[5 + 2*i], g);
-        }
-        liczby.clear();
-        while (kod < 230) {
-            int sasiedzi[7];
-            int k = 0;
-            typename graph_traits<Graph>::adjacency_iterator ai;
-            typename graph_traits<Graph>::adjacency_iterator ai_end;
-            for (tie(ai, ai_end) = adjacent_vertices(zeton, g); ai != ai_end; ++ai) {
-                sasiedzi[k++] = *ai;
-            }
-            int odp = sasiedzi[gen32() % k];  // losowy ruch klienta
-            serwer << string("210 ") + to_string(odp) + string("\n");
-            serwer.flush();
-            remove_edge(zeton, odp, g);
-            zeton = odp;
-            cout << "Wyslalem: 210 " << odp << endl;
-            ss.clear();
-            getline(serwer, komunikat);
-            cout << "Odebralem: " << komunikat << endl;
-            ss.str(komunikat);
-            ss >> kod;
-            if (kod == 220) {
-                int ruch;
-                ss >> ruch;
-                remove_edge(zeton, ruch, g);
-                zeton = ruch;
-            }
-        }
-        serwer.close();
+	ss >> moj_kolor;
+    string stan;
+	ss >> stan;
+    size_t pos = 0;
+    while ((pos = stan.find("||", pos)) != string::npos) {
+        stan.replace(pos, 2, "|_|");
+        pos += 2;
     }
-    catch (std::exception& e) {
-        cout << "Wyjatek: " << e.what() << endl;
+    auto input = make_unique<char[]>(stan.length() + 1); // +1 for null terminator
+    strncpy_s(input.get(), stan.length() + 1, stan.c_str(), stan.length());
+    const char* delim = "|";
+    char* next_token;
+    char* token = strtok_s(input.get(), delim, &next_token);
+    int i = 0;
+    while (token && i < 10) {
+		sterty[i++] = (token[0] != '_' ? string(token) : string(""));
+        token = strtok_s(NULL, delim, &next_token);
+    }
+    while (kod < 230) {
+        ruch odp;
+        losowy_ruch(odp);
+        cout << string("210 ") << to_string(odp.nr) 
+            << (odp.sterta.length() > 0 ? " " : "") << odp.sterta << endl;
+		cout.flush();
+		sterty[odp.nr] = odp.sterta;
+        ss.clear();
+        getline(cin, komunikat);
+        ss.str(komunikat);
+        ss >> kod;
+        if (kod == 220) {
+            ss >> odp.nr;
+			odp.sterta.clear();
+			ss >> odp.sterta;
+            sterty[odp.nr] = odp.sterta;
+        }
     }
     return 0;
 }
 ```
 
-### C#
-
-[github.com/michalmrowiec/Game-on-the-graph](https://github.com/michalmrowiec/Game-on-the-graph)
-
 ## Warunki zaliczenia
 
-Programy grające w krążki powinny być napisane w języku C++. Ocena zaliczeniowa tego projektu zależy od liczby zdobytych punktów w turnieju. Autor programu, który uzyskał największą liczbę punktów (takich osób może być kilka) uzyskuje ocenę bardzo dobrą. Autor programu, który uzyskał najmniejszą liczbę punktów (takich osób może być kilka) uzyskuje ocenę dostateczną. Dla reszty osób oceny wyznaczone zostaną proporcjonalnie do liczby zdobytych punktów. W turnieju wezmą udział: randomowe programy klienckie oraz prowadzący zajęcia.
+Programy grające w krążki powinny być napisane w języku C++. Ocena zaliczeniowa tego projektu zależy od liczby zdobytych punktów w turnieju. Autor programu, który uzyskał największą liczbę punktów (takich osób może być kilka) uzyskuje ocenę bardzo dobrą. Autor programu, który uzyskał najmniejszą liczbę punktów (takich osób może być kilka) uzyskuje ocenę dostateczną. Dla reszty osób oceny wyznaczone zostaną proporcjonalnie do liczby zdobytych punktów.

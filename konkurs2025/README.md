@@ -176,28 +176,28 @@ typedef struct {
 } ruch;
 
 void losowy_ruch(ruch &r) {
-	int i, j, licznik = 0;
-	for (i = 0; i < 10; i++) {
+    int i, j, licznik = 0;
+    for (i = 0; i < 10; i++) {
         const int num_items = count(sterty[i].cbegin(), sterty[i].cend(), moj_kolor);
-		licznik += num_items;
-	}
-	int wylosowany = gen32() % licznik;
-	licznik = 0;
-	for (i = 0; i < 10; i++) {
-		const int num_items = count(sterty[i].cbegin(), sterty[i].cend(), moj_kolor);
-		licznik += num_items;
-		if (licznik > wylosowany) {
-			r.nr = i;
-			licznik -= num_items;
+        licznik += num_items;
+    }
+    int wylosowany = gen32() % licznik;
+    licznik = 0;
+    for (i = 0; i < 10; i++) {
+        const int num_items = count(sterty[i].cbegin(), sterty[i].cend(), moj_kolor);
+        licznik += num_items;
+        if (licznik > wylosowany) {
+            r.nr = i;
+            licznik -= num_items;
             j = 0;
-			while (licznik <= wylosowany) {
-				if (sterty[i][j++] == moj_kolor)
-				    licznik++;
+            while (licznik <= wylosowany) {
+                if (sterty[i][j++] == moj_kolor)
+                    licznik++;
             }
-			r.sterta = sterty[i].substr(0, j-1);
-			break;
-		}
-	}
+            r.sterta = sterty[i].substr(0, j-1);
+            break;
+        }
+    }
 }
 
 int main(int argc, char* argv[]) {
@@ -211,9 +211,9 @@ int main(int argc, char* argv[]) {
     if (kod != 200) {
         return 1;
     }
-	ss >> moj_kolor;
+    ss >> moj_kolor;
     string stan;
-	ss >> stan;
+    ss >> stan;
     size_t pos = 0;
     while ((pos = stan.find("||", pos)) != string::npos) {
         stan.replace(pos, 2, "|_|");
@@ -226,7 +226,7 @@ int main(int argc, char* argv[]) {
     char* token = strtok_s(input.get(), delim, &next_token);
     int i = 0;
     while (token && i < 10) {
-		sterty[i++] = (token[0] != '_' ? string(token) : string(""));
+        sterty[i++] = (token[0] != '_' ? string(token) : string(""));
         token = strtok_s(NULL, delim, &next_token);
     }
     while (kod < 230) {
@@ -234,16 +234,16 @@ int main(int argc, char* argv[]) {
         losowy_ruch(odp);
         cout << string("210 ") << to_string(odp.nr) 
             << (odp.sterta.length() > 0 ? " " : "") << odp.sterta << endl;
-		cout.flush();
-		sterty[odp.nr] = odp.sterta;
+        cout.flush();
+        sterty[odp.nr] = odp.sterta;
         ss.clear();
         getline(cin, komunikat);
         ss.str(komunikat);
         ss >> kod;
         if (kod == 220) {
             ss >> odp.nr;
-			odp.sterta.clear();
-			ss >> odp.sterta;
+            odp.sterta.clear();
+            ss >> odp.sterta;
             sterty[odp.nr] = odp.sterta;
         }
     }

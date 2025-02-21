@@ -26,7 +26,7 @@ Serwer napisany jest w języku C# z wykorzystaniem [Avalonia UI](https://avaloni
 
 ## Uruchomienie serwera
 
-Najpierw w katalogu, gdzie mamy program `SerwerKrazki.exe` tworzymy podkatalog `Programy` oraz plik `gracze.jsonl`. W katalogu `Programy` umieszczamy pliki wykonywalne (`.exe`) programów, które wezmą udział w turnieju oraz wymagane dla ich działania pliki `.dll` (o ile jakieś są potrzebne). Następnie tworzymy plik `gracze.jsonl` wg poniższego schematu:
+Najpierw w katalogu, gdzie mamy program `SerwerKrazki.exe` tworzymy podkatalog `Programy` oraz plik `gracze.jsonl`. W katalogu `Programy` umieszczamy pliki wykonywalne (`.exe`) programów, które wezmą udział w turnieju. Następnie tworzymy plik `gracze.jsonl` wg poniższego schematu:
 ```
 {"Name": "Adam", "Surname": "Kowalski", "Program": "s12345.exe"}
 {"Name": "Ewa", "Surname": "Gołąb", "Program": "s20006.exe"}

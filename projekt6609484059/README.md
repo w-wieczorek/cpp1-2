@@ -5,7 +5,7 @@
 **Graf** (nieskierowany) *G* składa się z dwóch zbiorów: *V* oraz *E*, przy czym *V*
 jest niepustym skończonym zbiorem, którego elementy nazywane są wierzchołkami, a *E* jest rodziną dwuelementowych podzbiorów zbioru wierzchołków *V*, zwanych krawędziami.
 
-**Drzewo** graf (nieskierowany), który jest acykliczny i spójny, czyli taki graf, w którym z każdego wierzchołka drzewa można dotrzeć do każdego innego wierzchołka (spójność) tylko jednym sposobem (acykliczność, brak możliwości chodzenia „w kółko”).
+**Drzewo** to graf, który jest acykliczny i spójny, czyli taki graf, w którym z każdego wierzchołka drzewa można dotrzeć do każdego innego wierzchołka (spójność) tylko jednym sposobem (acykliczność, brak możliwości chodzenia „w kółko”).
 
 W wielu zastosowaniach w drzewie wyróżnia się jeden wierzchołek startowy zwany **korzeniem**.
 

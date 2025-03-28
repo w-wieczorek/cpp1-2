@@ -4,7 +4,8 @@ xmlns="http://www.w3.org/2000/svg">
     text {
         font-family:Consolas;
     }
-</style>       
+</style>
+<g transform="scale(0.5)">
 <line style="stroke-width: 2;" stroke="black" x1="32" y1="32" 
     x2="160" y2="32" />
 <line style="stroke-width: 4;" stroke="blue" x1="160" y1="32"
@@ -85,4 +86,5 @@ xmlns="http://www.w3.org/2000/svg">
 <text text-anchor="middle" x="288" y="424" font-size="26">14</text>
 <circle cx="416" cy="416" r="16" fill="white" stroke="black" stroke-width="2" />
 <text text-anchor="middle" x="416" y="424" font-size="26">15</text>
+</g>
 </svg>

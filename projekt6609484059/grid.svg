@@ -1,11 +1,11 @@
-<svg width="224" height="224"
+<svg width="360" height="360"
 xmlns="http://www.w3.org/2000/svg">
 <style>
     text {
         font-family:Consolas;
     }
 </style>
-<g transform="scale(0.5)">
+<g transform="scale(0.8)">
 <line style="stroke-width: 2;" stroke="black" x1="32" y1="32" 
     x2="160" y2="32" />
 <line style="stroke-width: 4;" stroke="blue" x1="160" y1="32"

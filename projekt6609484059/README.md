@@ -82,6 +82,6 @@ Napisać program konsolowy w języku C/C++, który ze standardowego wejścia odc
 
 Program może korzystać z dodatkowych (ogólnie dostępnych w Internecie) bibliotek pod warunkiem, że mamy dostęp do ich kodu źródłowego w języku C/C++. Jeśli program ma postać więcej niż jednego pliku, to powinien być zorganizowany w projekt, który da się skompilować za pomocą ogólnie dostępnego narzędzia (`dotnet build`, `make` itp. w zależności od systemu operacyjnego i polecanego kompilatora).
 
-Programy będą oceniane na podstawie trzech grafów: 8-wierzchołkowego oraz do 30 krawędzi, 50-wierzchołkowego oraz do 200 krawędzi, 200-wierzchołkowego oraz do 2000 krawędzi. Rozwiązanie w limicie czasowym pierwszego grafu daje ocenę dostateczną, drugiego – dobrą, trzeciego – bardzo dobrą.
+Programy będą oceniane na podstawie trzech grafów: 8-wierzchołkowego oraz do 30 krawędzi, 50-wierzchołkowego oraz do 200 krawędzi, 100-wierzchołkowego oraz do 1000 krawędzi. Rozwiązanie w limicie czasowym pierwszego grafu daje ocenę dostateczną, drugiego – dobrą, trzeciego – bardzo dobrą.
 
 Przykładowe dane testowe: [`g8.txt`](https://w-wieczorek.github.io/cpp1-2/konkurs/g8.txt), [`g50.txt`](https://w-wieczorek.github.io/cpp1-2/konkurs/g50.txt), [`g200.txt`](https://w-wieczorek.github.io/cpp1-2/konkurs/g200.txt).

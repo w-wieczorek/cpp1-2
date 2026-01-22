@@ -9,7 +9,7 @@ jest niepustym skończonym zbiorem, którego elementy nazywane są wierzchołkam
 
 W wielu zastosowaniach w drzewie wyróżnia się jeden wierzchołek startowy zwany **korzeniem**.
 
-**Drogą** w drzewie będziemy nazywali ciąg wierzchołków _v_<sub>1</sub>, _v_<sub>2</sub>,..., _v_<sub>k</sub>, w którym każde dwa kolejne wierzchołki są krawędzią (tzn. {_v_<sub>1</sub>, _v_<sub>2</sub>} jest krawędzią, {_v_<sub>2</sub>, _v_<sub>3</sub>} jest krawędzią itd.), jeśli ponadto wierzchołki _v_<sub>1</sub>, _v_<sub>2</sub>,..., _v_<sub>k</sub> są różne. **Długość** takiej drogi wynosi _k_-1.
+**Drogą** w drzewie będziemy nazywali ciąg parami różnych wierzchołków _v_<sub>1</sub>, _v_<sub>2</sub>,..., _v_<sub>k</sub>, w którym każde dwa kolejne wierzchołki są krawędzią (tzn. {_v_<sub>1</sub>, _v_<sub>2</sub>} jest krawędzią, {_v_<sub>2</sub>, _v_<sub>3</sub>} jest krawędzią itd.). **Długość** takiej drogi wynosi _k_-1.
 
 **Wysokością** drzewa z korzeniem jest długość najdłuższej drogi biegnącej od korzenia do dowolnego wierzchołka.
 
@@ -78,9 +78,9 @@ Na wyjściu należy wypisać optymalne drzewo w postaci struktury hierarchicznej
 
 ## Warunki zaliczenia
 
-Napisać program konsolowy w języku C/C++, który ze standardowego wejścia odczytuje dane (proszę przyjąć formatowanie wg powyższego przykładu), a na standardowym wyjściu wypisuje rozwiązanie. Limit czasowy wynosi 10 sekund.
+Napisać program konsolowy w języku C/C++, który ze standardowego wejścia odczytuje dane (proszę przyjąć formatowanie wg powyższego przykładu), a na standardowym wyjściu wypisuje rozwiązanie. Limit czasowy wynosi 5 sekund.
 
-Program może korzystać z dodatkowych (ogólnie dostępnych w Internecie) bibliotek pod warunkiem, że mamy dostęp do ich kodu źródłowego w języku C/C++. Jeśli program ma postać więcej niż jednego pliku, to powinien być zorganizowany w projekt, który da się skompilować za pomocą ogólnie dostępnego narzędzia (`dotnet build`, `make` itp. w zależności od systemu operacyjnego i polecanego kompilatora).
+Program może korzystać z dodatkowych (ogólnie dostępnych w Internecie) bibliotek pod warunkiem, że mamy dostęp do ich kodu źródłowego w języku C/C++. Jeśli program ma postać więcej niż jednego pliku, to powinien być zorganizowany w projekt, który da się skompilować za pomocą ogólnie dostępnego narzędzia (`bazel`, `cmake`, `make`, `meson`, projekt MSBuild/Visual Studio itp. w zależności od systemu operacyjnego i polecanego kompilatora).
 
 Programy będą oceniane na podstawie trzech grafów: 8-wierzchołkowego oraz do 30 krawędzi, 40-wierzchołkowego oraz do 200 krawędzi, 80-wierzchołkowego oraz do 500 krawędzi. Rozwiązanie w limicie czasowym pierwszego grafu daje ocenę dostateczną, drugiego – dobrą, trzeciego – bardzo dobrą.
 

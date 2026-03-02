@@ -15,7 +15,6 @@
  *      /link ws2_32.lib
  */
 
-#define ASIO_STANDALONE
 #include <asio.hpp>
 
 #include <algorithm>

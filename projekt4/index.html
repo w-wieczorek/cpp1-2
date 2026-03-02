@@ -90,20 +90,24 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="styl.css" />
-  <script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']]
-    },
-    output: {
-      font: 'FiraMath'
-    }
-  };
-  </script>
   <script defer=""
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
-  type="text/javascript"></script>
+  src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
 </head>
 <body>
 <h1 id="konkurs-programistyczny-zgadnij-automat-dfa-challenge">Konkurs
@@ -126,8 +130,8 @@ wysyłanych przez serwer.</p>
 <h3 id="21-ukryty-automat">2.1 Ukryty automat</h3>
 <p>Serwer przechowuje stały (przez czas trwania rundy) automat DFA
 zdefiniowany jako:</p>
-<p><span class="math display">\[\mathcal{A} = (Q,\, \Sigma,\, \delta,\,
-q_0,\, F)\]</span></p>
+<p><span class="math display">\mathcal{A} = (Q,\, \Sigma,\, \delta,\,
+q_0,\, F)</span></p>
 <table>
 <thead>
 <tr>
@@ -137,26 +141,26 @@ q_0,\, F)\]</span></p>
 </thead>
 <tbody>
 <tr>
-<td>Zbiór stanów <span class="math inline">\(Q\)</span></td>
-<td><span class="math inline">\(\{0, 1, 2, \dots, 9\}\)</span> —
-<strong>10 stanów</strong></td>
+<td>Zbiór stanów <span class="math inline">Q</span></td>
+<td><span class="math inline">\{0, 1, 2, \dots, 9\}</span> — <strong>10
+stanów</strong></td>
 </tr>
 <tr>
-<td>Alfabet <span class="math inline">\(\Sigma\)</span></td>
-<td><span class="math inline">\(\{a, b\}\)</span></td>
+<td>Alfabet <span class="math inline">\Sigma</span></td>
+<td><span class="math inline">\{a, b\}</span></td>
 </tr>
 <tr>
-<td>Stan początkowy <span class="math inline">\(q_0\)</span></td>
-<td><span class="math inline">\(0\)</span></td>
+<td>Stan początkowy <span class="math inline">q_0</span></td>
+<td><span class="math inline">0</span></td>
 </tr>
 <tr>
-<td>Stany akceptujące <span class="math inline">\(F\)</span></td>
+<td>Stany akceptujące <span class="math inline">F</span></td>
 <td>dokładnie <strong>5 stanów</strong> wybranych losowo z <span
-class="math inline">\(Q\)</span></td>
+class="math inline">Q</span></td>
 </tr>
 <tr>
-<td>Funkcja przejścia <span class="math inline">\(\delta\)</span></td>
-<td><span class="math inline">\(\delta : Q \times \Sigma \to Q\)</span>,
+<td>Funkcja przejścia <span class="math inline">\delta</span></td>
+<td><span class="math inline">\delta : Q \times \Sigma \to Q</span>,
 generowana losowo (automat zupełny)</td>
 </tr>
 </tbody>
@@ -168,7 +172,7 @@ trwania.</p>
 <p>Program kliencki ma za zadanie:</p>
 <ol type="1">
 <li><strong>Fazę uczenia</strong> — wysyłać do serwera słowa <span
-class="math inline">\(w \in \{a,b\}^*\)</span> i na podstawie odpowiedzi
+class="math inline">w \in \{a,b\}^*</span> i na podstawie odpowiedzi
 <code>YES</code>/<code>NO</code> odtworzyć strukturę ukrytego
 automatu.</li>
 <li><strong>Fazę weryfikacji</strong> — odpowiedzieć poprawnie na
@@ -281,8 +285,8 @@ przynależność</h3>
 <pre><code>QUERY &lt;słowo&gt;</code></pre>
 <ul>
 <li><code>&lt;słowo&gt;</code> — niepusty ciąg nad <span
-class="math inline">\(\{a,b\}^*\)</span>; dla słowa pustego <span
-class="math inline">\(\varepsilon\)</span> użyj tokenu
+class="math inline">\{a,b\}^*</span>; dla słowa pustego <span
+class="math inline">\varepsilon</span> użyj tokenu
 <code>eps</code>.</li>
 <li>Przykłady: <code>QUERY aabba</code>, <code>QUERY eps</code>,
 <code>QUERY b</code></li>
@@ -310,7 +314,7 @@ odpowiedzią <code>ERROR INVALID_WORD</code>.</li>
 weryfikacyjnym (typowo 280–350).</li>
 </ul>
 <h4 id="wymiana-testów">Wymiana testów</h4>
-<p>Dla każdego <span class="math inline">\(i = 1, \dots, n\)</span>:</p>
+<p>Dla każdego <span class="math inline">i = 1, \dots, n</span>:</p>
 <ol type="1">
 <li>Serwer wysyła:</li>
 </ol>
@@ -367,7 +371,7 @@ automatowi.</p>
 <h2 id="4-zasady-punktacji">4. Zasady punktacji</h2>
 <h3 id="41-podstawowa-punktacja-rundy">4.1 Podstawowa punktacja
 rundy</h3>
-<p><span class="math display">\[S = S_{\text{base}} + B_q\]</span></p>
+<p><span class="math display">S = S_{\text{base}} + B_q</span></p>
 <table>
 <thead>
 <tr>
@@ -377,16 +381,16 @@ rundy</h3>
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline">\(S_{\text{base}}\)</span> — za pomyślną
+<td><span class="math inline">S_{\text{base}}</span> — za pomyślną
 weryfikację</td>
 <td><strong>1000 pkt</strong></td>
 </tr>
 <tr>
-<td><span class="math inline">\(B_q\)</span> — bonus za efektywność
+<td><span class="math inline">B_q</span> — bonus za efektywność
 zapytań</td>
-<td><span class="math inline">\(\max(0,\ 500 - \lfloor q / 2
-\rfloor)\)</span> pkt, gdzie <span class="math inline">\(q\)</span> =
-liczba wysłanych zapytań QUERY</td>
+<td><span class="math inline">\max(0,\ 500 - \lfloor q / 2
+\rfloor)</span> pkt, gdzie <span class="math inline">q</span> = liczba
+wysłanych zapytań QUERY</td>
 </tr>
 </tbody>
 </table>
@@ -493,7 +497,7 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#
 <span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n <span class="op">=</span> <span class="bu">std::</span>stoi<span class="op">(</span>line<span class="op">.</span>substr<span class="op">(</span>line<span class="op">.</span>rfind<span class="op">(</span><span class="ch">&#39; &#39;</span><span class="op">)</span> <span class="op">+</span> <span class="dv">1</span><span class="op">));</span></span>
 <span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>string test <span class="op">=</span> recv<span class="op">();</span>             <span class="co">// </span><span class="co">TEST</span><span class="co"> &lt;słowo&gt;</span></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>string test <span class="op">=</span> recv<span class="op">();</span>             <span class="co">// </span><span class="al">TEST</span><span class="co"> &lt;słowo&gt;</span></span>
 <span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>string word <span class="op">=</span> test<span class="op">.</span>substr<span class="op">(</span><span class="dv">5</span><span class="op">);</span>     <span class="co">// wytnij &quot;TEST &quot;</span></span>
 <span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>        <span class="co">// --- Tu zapytaj swój model DFA ---</span></span>
@@ -522,29 +526,28 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#
 odtwarza <strong>minimalny DFA</strong> dla nieznanego języka
 regularnego, korzystając wyłącznie z zapytań o przynależność (ang.
 <em>membership queries</em>). Wymagana liczba zapytań wynosi <span
-class="math inline">\(O(n^2 \cdot |\Sigma|)\)</span>, gdzie <span
-class="math inline">\(n\)</span> — liczba stanów docelowego automatu.
-Dla naszego przypadku (<span class="math inline">\(n = 10\)</span>,
-<span class="math inline">\(|\Sigma| = 2\)</span>) to teoretycznie
-<strong>ok. 200 zapytań</strong>, co jest znacznie poniżej limitu
-1000.</p>
+class="math inline">O(n^2 \cdot |\Sigma|)</span>, gdzie <span
+class="math inline">n</span> — liczba stanów docelowego automatu. Dla
+naszego przypadku (<span class="math inline">n = 10</span>, <span
+class="math inline">|\Sigma| = 2</span>) to teoretycznie <strong>ok. 200
+zapytań</strong>, co jest znacznie poniżej limitu 1000.</p>
 <p>Kroki algorytmu L*:</p>
 <ol type="1">
 <li>Zainicjuj <strong>tablicę obserwacji</strong> <span
-class="math inline">\(T: (S \cup S \cdot \Sigma) \times E \to
-\{0,1\}\)</span>, gdzie <span class="math inline">\(S =
-\{\varepsilon\}\)</span>, <span class="math inline">\(E =
-\{\varepsilon\}\)</span>.</li>
+class="math inline">T: (S \cup S \cdot \Sigma) \times E \to
+\{0,1\}</span>, gdzie <span class="math inline">S =
+\{\varepsilon\}</span>, <span class="math inline">E =
+\{\varepsilon\}</span>.</li>
 <li><strong>Zapełnij</strong> brakujące komórki tablicy zapytaniami do
 serwera.</li>
 <li>Sprawdź <strong>zamkniętość</strong> (closedness) i
 <strong>spójność</strong> (consistency) tablicy. Jeśli nie są spełnione,
-rozszerz <span class="math inline">\(S\)</span> lub <span
-class="math inline">\(E\)</span> i wróć do kroku 2.</li>
+rozszerz <span class="math inline">S</span> lub <span
+class="math inline">E</span> i wróć do kroku 2.</li>
 <li>Zbuduj <strong>hipotezę</strong> DFA <span
-class="math inline">\(\mathcal{H}\)</span> na podstawie tablicy.</li>
-<li>Sprawdź równoważność <span
-class="math inline">\(\mathcal{H}\)</span> z ukrytym automatem.</li>
+class="math inline">\mathcal{H}</span> na podstawie tablicy.</li>
+<li>Sprawdź równoważność <span class="math inline">\mathcal{H}</span> z
+ukrytym automatem.</li>
 <li>Powtarzaj od kroku 2 aż do uzyskania właściwego automatu.</li>
 </ol>
 <blockquote>
@@ -556,17 +559,17 @@ kontrprzykładem.</p>
 </blockquote>
 <h3 id="62-algorytm-naiwny-podejście-wyczerpujące">6.2 Algorytm naiwny
 (podejście wyczerpujące)</h3>
-<p>Dla małych automatów (<span class="math inline">\(n = 10\)</span>)
+<p>Dla małych automatów (<span class="math inline">n = 10</span>)
 wystarczy systematyczne odpytywanie wszystkich słów o długości <span
-class="math inline">\(0, 1, 2, \dots\)</span> i budowanie tablicy
-przejść metodą BFS. Liczba rozróżnialnych klas równoważności
-Myhilla-Nerode'a to co najwyżej <span class="math inline">\(n =
-10\)</span>, więc do ich pełnej identyfikacji wystarczą słowa długości
-<span class="math inline">\(\leq 9\)</span>.</p>
-<p>Łączna liczba słów nad <span class="math inline">\(\{a, b\}\)</span>
-o długości <span class="math inline">\(\leq 9\)</span>:</p>
-<p><span class="math display">\[\sum_{k=0}^{9} 2^k = 2^{10} - 1 =
-1023\]</span></p>
+class="math inline">0, 1, 2, \dots</span> i budowanie tablicy przejść
+metodą BFS. Liczba rozróżnialnych klas równoważności Myhilla-Nerode'a to
+co najwyżej <span class="math inline">n = 10</span>, więc do ich pełnej
+identyfikacji wystarczą słowa długości <span class="math inline">\leq
+9</span>.</p>
+<p>Łączna liczba słów nad <span class="math inline">\{a, b\}</span> o
+długości <span class="math inline">\leq 9</span>:</p>
+<p><span class="math display">\sum_{k=0}^{9} 2^k = 2^{10} - 1 =
+1023</span></p>
 <p>Zmieści się to w limicie 1000 zapytań jedynie przy ostrożnym
 planowaniu — stąd przewaga podejścia L*.</p>
 <h3 id="63-reprezentacja-dfa-w-pamięci-klienta-to-tylko-propozycja">6.3

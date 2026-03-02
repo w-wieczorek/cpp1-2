@@ -52,3 +52,7 @@ th {
 tr:nth-child(even) {
   background-color: #fafafa;   /* zebra — naprzemienne jasne pasy */
 }
+
+.katex {
+  font-size: 1.05em;   /* zmniejsz, jeli wzory s za due wzgldem tekstu */
+}

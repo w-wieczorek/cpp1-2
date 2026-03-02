@@ -22,9 +22,9 @@ słownych wysyłanych przez serwer.
 
 Serwer przechowuje stały (przez czas trwania rundy) automat DFA zdefiniowany jako:
 
-$$
+```math
 \mathcal{A} = (Q,\, \Sigma,\, \delta,\, q_0,\, F)
-$$
+```
 
 | Składnik | Wartość |
 |---|---|

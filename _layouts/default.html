@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}
+  </title>
+
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css"
+    crossorigin="anonymous">
+
+  <!-- KaTeX JS -->
+  <script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Auto-render: automatycznie wykrywa $...$ i $$...$$ -->
+  <script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$',  right: '$',  display: false}
+      ],
+      throwOnError: false
+    });">
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <p>&copy; {{ site.time | date: "%Y" }} {{ site.author }}</p>
+  </footer>
+
+</body>
+</html>
+

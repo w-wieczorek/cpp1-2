@@ -10,12 +10,13 @@
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
     html {
+      font-size: 18px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
     body {
       margin: 0 auto;
-      max-width: 48em;
+      max-width: 80%;
       padding-left: 50px;
       padding-right: 50px;
       padding-top: 50px;
@@ -25,9 +26,9 @@
       text-rendering: optimizeLegibility;
       font-kerning: normal;
     }
-    @media (max-width: 1000px) {
+    @media (max-width: 600px) {
       body {
-        font-size: 1em;
+        font-size: 0.9em;
         padding: 12px;
       }
       h1 {

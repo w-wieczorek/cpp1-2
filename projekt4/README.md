@@ -22,9 +22,7 @@ słownych wysyłanych przez serwer.
 
 Serwer przechowuje stały (przez czas trwania rundy) automat DFA zdefiniowany jako:
 
-```math
-\mathcal{A} = (Q,\, \Sigma,\, \delta,\, q_0,\, F)
-```
+$$\mathcal{A} = (Q,\, \Sigma,\, \delta,\, q_0,\, F)$$
 
 | Składnik | Wartość |
 |---|---|
@@ -68,7 +66,6 @@ są ignorowane przez serwer.
 ### 3.2 Przegląd faz sesji
 
 ```
-
 KLIENT                          SERWER
 |                               |
 |---- HELLO <nazwa> ----------->|   Faza 1: Rejestracja
@@ -91,7 +88,6 @@ KLIENT                          SERWER
 |                               |
 |---- QUIT -------------------->|   Zamknięcie sesji
 |<--- BYE ----------------------|
-
 ```
 
 ### 3.3 Faza 1 — Rejestracja
@@ -99,9 +95,7 @@ KLIENT                          SERWER
 #### Komunikat klienta
 
 ```
-
 HELLO <nazwa_zespołu>
-
 ```
 
 - `<nazwa_zespołu>` — ciąg znaków alfanumerycznych i `_`, długość 1–32 znaki.
@@ -110,9 +104,7 @@ HELLO <nazwa_zespołu>
 #### Odpowiedź serwera
 
 ```
-
 WELCOME <session_id> LIMIT <k>
-
 ```
 
 - `<session_id>` — unikalny identyfikator sesji (ciąg szesnastkowy, 8 znaków).
@@ -122,9 +114,7 @@ WELCOME <session_id> LIMIT <k>
 W przypadku błędu (np. zduplikowana nazwa):
 
 ```
-
 ERROR <kod> <opis>
-
 ```
 
 Możliwe kody błędów:
@@ -140,9 +130,7 @@ Możliwe kody błędów:
 #### Komunikat klienta
 
 ```
-
 QUERY <słowo>
-
 ```
 
 - `<słowo>` — niepusty ciąg nad $\{a,b\}^*$; dla słowa pustego $\varepsilon$ użyj
@@ -152,19 +140,15 @@ QUERY <słowo>
 #### Odpowiedź serwera
 
 ```
-
 RESULT YES
 RESULT NO
-
 ```
 
 W przypadku błędu:
 
 ```
-
 ERROR LIMIT_EXCEEDED
 ERROR INVALID_WORD
-
 ```
 
 Uwagi:
@@ -179,9 +163,7 @@ Po wysłaniu `SUBMIT` klient inicjuje weryfikację.
 #### Odpowiedź serwera na SUBMIT
 
 ```
-
 VERIFY_START <n>
-
 ```
 
 - `<n>` — liczba słów testowych w zestawie weryfikacyjnym (typowo 280–350).
@@ -192,27 +174,19 @@ Dla każdego $i = 1, \dots, n$:
 
 1. Serwer wysyła:
 ```
-
 TEST <słowo_i>
-
 ```
 2. Klient odpowiada natychmiastowo (przyjmijmy, że w ciągu **2 sekund**):
 ```
-
 ANSWER YES
-
 ```
 lub
 ```
-
 ANSWER NO
-
 ```
 3. Serwer potwierdza:
 ```
-
 ACK
-
 ```
 
 #### Zakończenie weryfikacji
@@ -220,18 +194,14 @@ ACK
 Jeśli wszystkie odpowiedzi są poprawne:
 
 ```
-
 SUCCESS SCORE <pts>
-
 ```
 
 W przypadku pierwszej błędnej odpowiedzi serwer **natychmiast** przerywa
 weryfikację i wysyła:
 
 ```
-
 FAILURE WORD <słowo_i>
-
 ```
 
 gdzie `<słowo_i>` to słowo, na którym nastąpił błąd. W takim wypadku klient powinien się rozłączyć.
@@ -254,9 +224,7 @@ gdzie `<słowo_i>` to słowo, na którym nastąpił błąd. W takim wypadku klie
 
 ### 4.1 Podstawowa punktacja rundy
 
-$$
-S = S_{\text{base}} + B_q
-$$
+$$S = S_{\text{base}} + B_q$$
 
 | Składnik | Wartość |
 |---|---|
@@ -288,6 +256,7 @@ Nieudana weryfikacja: **0 pkt** za daną rundę (sesję można powtórzyć).
 ### 5.2 Instalacja Asio (standalone)
 
 **vcpkg:**
+
 ```bash
 vcpkg install asio
 ```
@@ -404,7 +373,6 @@ int main(int argc, char* argv[]) {
 }
 ```
 
-
 ---
 
 ## 6. Wskazówki algorytmiczne
@@ -443,9 +411,7 @@ $n = 10$, więc do ich pełnej identyfikacji wystarczą słowa długości $\leq 
 
 Łączna liczba słów nad $\{a, b\}$ o długości $\leq 9$:
 
-$$
-\sum_{k=0}^{9} 2^k = 2^{10} - 1 = 1023
-$$
+$$\sum_{k=0}^{9} 2^k = 2^{10} - 1 = 1023$$
 
 Zmieści się to w limicie 1000 zapytań jedynie przy ostrożnym planowaniu
 — stąd przewaga podejścia L*.
@@ -546,7 +512,6 @@ S→C: SUCCESS  score=1208  queries=285
 C→S: QUIT
 S→C: BYE
 ```
-
 
 ---
 

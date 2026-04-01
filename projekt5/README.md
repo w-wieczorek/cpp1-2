@@ -169,9 +169,9 @@ Ocena zależy od wielkości rozwiązania planszy w wyznaczonym limicie czasowym:
 
 | Rozmiar planszy                  | Ocena |
 |----------------------------------|-------|
-| _n_ = 3                          | 3,5   |
-| _n_ = 4                          | 4,0   |
-| _n_ = 5                          | 4,5   |
+| _n_ = 3                          | 3,0   |
+| _n_ = 4                          | 3,5   |
+| _n_ = 5                          | 4,0   |
 | _n_ = 6                          | 5,0   |
 
 > 💡 **Podpowiedź algorytmiczna:** Dobre strategie odgadywania bazują na podejściu podobnym do gry Mastermind — po każdej odpowiedzi usuń z przestrzeni możliwych rozwiązań wszystkie wzory niezgodne z otrzymanymi `hits` i `exact`, a następną próbę wybierz tak, by maksymalnie zmniejszyć tę przestrzeń (np. algorytm min-max Knutha).

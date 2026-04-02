@@ -165,7 +165,7 @@ S: SOLVED 3
 
 ## Ocenianie
 
-Ocena zależy od wielkości rozwiązania planszy w wyznaczonym limicie czasowym:
+Ocena zależy od wielkości rozwiązanej planszy w wyznaczonym limicie czasowym:
 
 | Rozmiar planszy                  | Ocena |
 |----------------------------------|-------|
